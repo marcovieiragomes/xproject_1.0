@@ -30,7 +30,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `xdb`.`professor` (
   `idprofessor` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NULL,
-  `evaluator_idevaluator` INT NOT NULL,
+  `evaluator_idevaluator` INT NULL,
   PRIMARY KEY (`idprofessor`),
   INDEX `fk_professor_evaluator1_idx` (`evaluator_idevaluator` ASC),
   CONSTRAINT `fk_professor_evaluator1`
@@ -51,9 +51,9 @@ CREATE TABLE IF NOT EXISTS `xdb`.`socialanalysis` (
   `friendship2` INT NULL,
   `advice` INT NULL,
   `confidence` INT NULL,
-  `experiment_idexperiment` INT NOT NULL,
-  `student_idsubject` INT NOT NULL,
-  `student_idsubject1` INT NOT NULL,
+  `experiment_idexperiment` INT NULL,
+  `student_idsubject` INT NULL,
+  `student_idsubject1` INT NULL,
   PRIMARY KEY (`idsocialanalysis`),
   INDEX `fk_socialanalysis_student1_idx` (`student_idsubject` ASC),
   INDEX `fk_socialanalysis_student2_idx` (`student_idsubject1` ASC),
@@ -117,9 +117,9 @@ CREATE TABLE IF NOT EXISTS `xdb`.`student` (
   `age` INT NULL,
   `gender` VARCHAR(45) NULL,
   `code` VARCHAR(45) NULL,
-  `test_idtest` INT NOT NULL,
-  `evaluator_idevaluator` INT NOT NULL,
-  `group_idgroup` INT NOT NULL,
+  `test_idtest` INT NULL,
+  `evaluator_idevaluator` INT NULL,
+  `group_idgroup` INT NULL,
   PRIMARY KEY (`idsubject`),
   INDEX `fk_subject_test1_idx` (`test_idtest` ASC),
   INDEX `fk_student_evaluator1_idx` (`evaluator_idevaluator` ASC),
@@ -181,10 +181,10 @@ ENGINE = InnoDB;
 -- Table `xdb`.`criterion`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `xdb`.`criterion` (
-  `idcriterion` INT NOT NULL,
+  `idcriterion` INT NOT NULL AUTO_INCREMENT,
   `description` VARCHAR(100) NULL,
   `evaluation` INT NULL,
-  `question_idquestion` INT NOT NULL,
+  `question_idquestion` INT NULL,
   `issubjective` BINARY NULL,
   PRIMARY KEY (`idcriterion`),
   INDEX `fk_criterion_question1_idx` (`question_idquestion` ASC),
@@ -204,8 +204,8 @@ CREATE TABLE IF NOT EXISTS `xdb`.`answer` (
   `text` MEDIUMTEXT NULL,
   `ambient-variables` VARCHAR(45) NULL,
   `time` DATETIME NULL,
-  `test_has_question_test_idtest` INT NOT NULL,
-  `test_has_question_question_idquestion` INT NOT NULL,
+  `test_has_question_test_idtest` INT NULL,
+  `test_has_question_question_idquestion` INT NULL,
   PRIMARY KEY (`idanswer`),
   INDEX `fk_answer_test_has_question1_idx` (`test_has_question_test_idtest` ASC, `test_has_question_question_idquestion` ASC),
   CONSTRAINT `fk_answer_test_has_question1`
@@ -222,9 +222,9 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `xdb`.`evaluation` (
   `idevaluation` INT NOT NULL AUTO_INCREMENT,
   `evaluation` INT NULL,
-  `evaluator_idevaluator` INT NOT NULL,
-  `answer_idanswer` INT NOT NULL,
-  `criterion_accomplished` VARCHAR(45) NOT NULL,
+  `evaluator_idevaluator` INT NULL,
+  `answer_idanswer` INT NULL,
+  `criterion_accomplished` VARCHAR(45) NULL,
   PRIMARY KEY (`idevaluation`),
   INDEX `fk_evaluation_evaluator1_idx` (`evaluator_idevaluator` ASC),
   INDEX `fk_evaluation_answer1_idx` (`answer_idanswer` ASC),
@@ -245,7 +245,7 @@ ENGINE = InnoDB;
 -- Table `xdb`.`role`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `xdb`.`role` (
-  `idroles` INT NOT NULL,
+  `idroles` INT NOT NULL AUTO_INCREMENT,
   `rolescol` VARCHAR(45) NULL,
   PRIMARY KEY (`idroles`))
 ENGINE = InnoDB;
@@ -257,10 +257,10 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `xdb`.`user` (
   `iduser` INT NOT NULL AUTO_INCREMENT,
   `username` VARCHAR(45) NULL,
-  `password` VARCHAR(45) NULL,
+  `password` VARCHAR(65) NULL,
   `isActive` BINARY NULL,
   `email` VARCHAR(45) NULL,
-  `role_idroles` INT NOT NULL,
+  `role_idroles` INT NULL,
   PRIMARY KEY (`iduser`),
   INDEX `fk_user_role1_idx` (`role_idroles` ASC),
   CONSTRAINT `fk_user_role1`
@@ -274,3 +274,4 @@ ENGINE = InnoDB;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+

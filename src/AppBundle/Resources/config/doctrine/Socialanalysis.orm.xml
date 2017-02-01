@@ -33,7 +33,7 @@
         <option name="unsigned"/>
       </options>
     </field>
-    <field name="experimentIdexperiment" type="integer" column="experiment_idexperiment" nullable="false">
+    <field name="experimentIdexperiment" type="integer" column="experiment_idexperiment" nullable="true">
       <options>
         <option name="unsigned"/>
       </options>

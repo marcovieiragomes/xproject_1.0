@@ -13,7 +13,7 @@
         <option name="unsigned"/>
       </options>
     </field>
-    <field name="criterionAccomplished" type="string" column="criterion_accomplished" length="45" nullable="false">
+    <field name="criterionAccomplished" type="string" column="criterion_accomplished" length="45" nullable="true">
       <options>
         <option name="fixed"/>
       </options>
