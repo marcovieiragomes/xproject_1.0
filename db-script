@@ -1,0 +1,276 @@
+-- MySQL Workbench Forward Engineering
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
+
+-- -----------------------------------------------------
+-- Schema xdb
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema xdb
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `xdb` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
+USE `xdb` ;
+
+-- -----------------------------------------------------
+-- Table `xdb`.`evaluator`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `xdb`.`evaluator` (
+  `idevaluator` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NULL,
+  PRIMARY KEY (`idevaluator`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `xdb`.`professor`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `xdb`.`professor` (
+  `idprofessor` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NULL,
+  `evaluator_idevaluator` INT NOT NULL,
+  PRIMARY KEY (`idprofessor`),
+  INDEX `fk_professor_evaluator1_idx` (`evaluator_idevaluator` ASC),
+  CONSTRAINT `fk_professor_evaluator1`
+    FOREIGN KEY (`evaluator_idevaluator`)
+    REFERENCES `xdb`.`evaluator` (`idevaluator`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `xdb`.`socialanalysis`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `xdb`.`socialanalysis` (
+  `idsocialanalysis` INT NOT NULL AUTO_INCREMENT,
+  `hidrance` INT NULL,
+  `friendship1` INT NULL,
+  `friendship2` INT NULL,
+  `advice` INT NULL,
+  `confidence` INT NULL,
+  `experiment_idexperiment` INT NOT NULL,
+  `student_idsubject` INT NOT NULL,
+  `student_idsubject1` INT NOT NULL,
+  PRIMARY KEY (`idsocialanalysis`),
+  INDEX `fk_socialanalysis_student1_idx` (`student_idsubject` ASC),
+  INDEX `fk_socialanalysis_student2_idx` (`student_idsubject1` ASC),
+  CONSTRAINT `fk_socialanalysis_student1`
+    FOREIGN KEY (`student_idsubject`)
+    REFERENCES `xdb`.`student` (`idsubject`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_socialanalysis_student2`
+    FOREIGN KEY (`student_idsubject1`)
+    REFERENCES `xdb`.`student` (`idsubject`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `xdb`.`test`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `xdb`.`test` (
+  `idtest` INT NOT NULL AUTO_INCREMENT,
+  `description` VARCHAR(45) NULL,
+  `professor_idprofessor` INT NOT NULL,
+  `locale` VARCHAR(45) NULL,
+  `socialanalysis_idsocialanalysis` INT NOT NULL,
+  `date` DATETIME NULL,
+  PRIMARY KEY (`idtest`),
+  INDEX `fk_test_professor1_idx` (`professor_idprofessor` ASC),
+  INDEX `fk_test_socialanalysis1_idx` (`socialanalysis_idsocialanalysis` ASC),
+  CONSTRAINT `fk_test_professor1`
+    FOREIGN KEY (`professor_idprofessor`)
+    REFERENCES `xdb`.`professor` (`idprofessor`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_test_socialanalysis1`
+    FOREIGN KEY (`socialanalysis_idsocialanalysis`)
+    REFERENCES `xdb`.`socialanalysis` (`idsocialanalysis`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `xdb`.`group`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `xdb`.`group` (
+  `idgroup` INT NOT NULL AUTO_INCREMENT,
+  `description` VARCHAR(45) NULL,
+  `year` VARCHAR(45) NULL,
+  `school` VARCHAR(45) NULL,
+  PRIMARY KEY (`idgroup`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `xdb`.`student`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `xdb`.`student` (
+  `idsubject` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(100) NULL,
+  `age` INT NULL,
+  `gender` VARCHAR(45) NULL,
+  `code` VARCHAR(45) NULL,
+  `test_idtest` INT NOT NULL,
+  `evaluator_idevaluator` INT NOT NULL,
+  `group_idgroup` INT NOT NULL,
+  PRIMARY KEY (`idsubject`),
+  INDEX `fk_subject_test1_idx` (`test_idtest` ASC),
+  INDEX `fk_student_evaluator1_idx` (`evaluator_idevaluator` ASC),
+  INDEX `fk_student_class1_idx` (`group_idgroup` ASC),
+  CONSTRAINT `fk_subject_test1`
+    FOREIGN KEY (`test_idtest`)
+    REFERENCES `xdb`.`test` (`idtest`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_student_evaluator1`
+    FOREIGN KEY (`evaluator_idevaluator`)
+    REFERENCES `xdb`.`evaluator` (`idevaluator`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_student_class1`
+    FOREIGN KEY (`group_idgroup`)
+    REFERENCES `xdb`.`group` (`idgroup`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `xdb`.`question`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `xdb`.`question` (
+  `idquestion` INT NOT NULL AUTO_INCREMENT,
+  `text` MEDIUMTEXT NULL,
+  `evaluation` INT NULL,
+  PRIMARY KEY (`idquestion`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `xdb`.`test_has_question`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `xdb`.`test_has_question` (
+  `test_idtest` INT NOT NULL,
+  `question_idquestion` INT NOT NULL,
+  `score` INT NULL,
+  `usesStressors` BINARY NULL,
+  PRIMARY KEY (`test_idtest`, `question_idquestion`),
+  INDEX `fk_test_has_question_question1_idx` (`question_idquestion` ASC),
+  INDEX `fk_test_has_question_test_idx` (`test_idtest` ASC),
+  CONSTRAINT `fk_test_has_question_test`
+    FOREIGN KEY (`test_idtest`)
+    REFERENCES `xdb`.`test` (`idtest`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_test_has_question_question1`
+    FOREIGN KEY (`question_idquestion`)
+    REFERENCES `xdb`.`question` (`idquestion`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `xdb`.`criterion`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `xdb`.`criterion` (
+  `idcriterion` INT NOT NULL,
+  `description` VARCHAR(100) NULL,
+  `evaluation` INT NULL,
+  `question_idquestion` INT NOT NULL,
+  `issubjective` BINARY NULL,
+  PRIMARY KEY (`idcriterion`),
+  INDEX `fk_criterion_question1_idx` (`question_idquestion` ASC),
+  CONSTRAINT `fk_criterion_question1`
+    FOREIGN KEY (`question_idquestion`)
+    REFERENCES `xdb`.`question` (`idquestion`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `xdb`.`answer`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `xdb`.`answer` (
+  `idanswer` INT NOT NULL AUTO_INCREMENT,
+  `text` MEDIUMTEXT NULL,
+  `ambient-variables` VARCHAR(45) NULL,
+  `time` DATETIME NULL,
+  `test_has_question_test_idtest` INT NOT NULL,
+  `test_has_question_question_idquestion` INT NOT NULL,
+  PRIMARY KEY (`idanswer`),
+  INDEX `fk_answer_test_has_question1_idx` (`test_has_question_test_idtest` ASC, `test_has_question_question_idquestion` ASC),
+  CONSTRAINT `fk_answer_test_has_question1`
+    FOREIGN KEY (`test_has_question_test_idtest` , `test_has_question_question_idquestion`)
+    REFERENCES `xdb`.`test_has_question` (`test_idtest` , `question_idquestion`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `xdb`.`evaluation`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `xdb`.`evaluation` (
+  `idevaluation` INT NOT NULL AUTO_INCREMENT,
+  `evaluation` INT NULL,
+  `evaluator_idevaluator` INT NOT NULL,
+  `answer_idanswer` INT NOT NULL,
+  `criterion_accomplished` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`idevaluation`),
+  INDEX `fk_evaluation_evaluator1_idx` (`evaluator_idevaluator` ASC),
+  INDEX `fk_evaluation_answer1_idx` (`answer_idanswer` ASC),
+  CONSTRAINT `fk_evaluation_evaluator1`
+    FOREIGN KEY (`evaluator_idevaluator`)
+    REFERENCES `xdb`.`evaluator` (`idevaluator`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_evaluation_answer1`
+    FOREIGN KEY (`answer_idanswer`)
+    REFERENCES `xdb`.`answer` (`idanswer`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `xdb`.`role`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `xdb`.`role` (
+  `idroles` INT NOT NULL,
+  `rolescol` VARCHAR(45) NULL,
+  PRIMARY KEY (`idroles`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `xdb`.`user`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `xdb`.`user` (
+  `iduser` INT NOT NULL AUTO_INCREMENT,
+  `username` VARCHAR(45) NULL,
+  `password` VARCHAR(45) NULL,
+  `isActive` BINARY NULL,
+  `email` VARCHAR(45) NULL,
+  `role_idroles` INT NOT NULL,
+  PRIMARY KEY (`iduser`),
+  INDEX `fk_user_role1_idx` (`role_idroles` ASC),
+  CONSTRAINT `fk_user_role1`
+    FOREIGN KEY (`role_idroles`)
+    REFERENCES `xdb`.`role` (`idroles`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

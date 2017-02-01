@@ -17,6 +17,12 @@
         <option name="fixed"/>
       </options>
     </field>
+    <field name="isactive" type="binary" column="isActive" nullable="true"/>
+    <field name="email" type="string" column="email" length="45" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
     <many-to-one field="roleroles" target-entity="Role" fetch="LAZY">
       <join-columns>
         <join-column name="role_idroles" referenced-column-name="idroles"/>
