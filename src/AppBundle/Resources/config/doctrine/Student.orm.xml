@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Student" table="student">
+    <indexes>
+      <index name="fk_subject_test1_idx" columns="test_idtest"/>
+      <index name="fk_student_evaluator1_idx" columns="evaluator_idevaluator"/>
+      <index name="fk_student_class1_idx" columns="group_idgroup"/>
+    </indexes>
+    <id name="idsubject" type="integer" column="idsubject">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="name" type="string" column="name" length="100" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="age" type="integer" column="age" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="gender" type="string" column="gender" length="45" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="code" type="string" column="code" length="45" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <many-to-one field="testtest" target-entity="Test" fetch="LAZY">
+      <join-columns>
+        <join-column name="test_idtest" referenced-column-name="idtest"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="evaluatorevaluator" target-entity="Evaluator" fetch="LAZY">
+      <join-columns>
+        <join-column name="evaluator_idevaluator" referenced-column-name="idevaluator"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="groupgroup" target-entity="Group" fetch="LAZY">
+      <join-columns>
+        <join-column name="group_idgroup" referenced-column-name="idgroup"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

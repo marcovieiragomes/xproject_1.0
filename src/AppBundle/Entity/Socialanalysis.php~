@@ -1,0 +1,88 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Socialanalysis
+ *
+ * @ORM\Table(name="socialanalysis", indexes={@ORM\Index(name="fk_socialanalysis_student1_idx", columns={"student_idsubject"}), @ORM\Index(name="fk_socialanalysis_student2_idx", columns={"student_idsubject1"})})
+ * @ORM\Entity
+ */
+class Socialanalysis
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="hidrance", type="integer", nullable=true)
+     */
+    private $hidrance;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="friendship1", type="integer", nullable=true)
+     */
+    private $friendship1;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="friendship2", type="integer", nullable=true)
+     */
+    private $friendship2;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="advice", type="integer", nullable=true)
+     */
+    private $advice;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="confidence", type="integer", nullable=true)
+     */
+    private $confidence;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="experiment_idexperiment", type="integer", nullable=false)
+     */
+    private $experimentIdexperiment;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idsocialanalysis", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idsocialanalysis;
+
+    /**
+     * @var \AppBundle\Entity\Student
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Student")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="student_idsubject1", referencedColumnName="idsubject")
+     * })
+     */
+    private $studentsubject1;
+
+    /**
+     * @var \AppBundle\Entity\Student
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Student")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="student_idsubject", referencedColumnName="idsubject")
+     * })
+     */
+    private $studentsubject;
+
+
+}
+

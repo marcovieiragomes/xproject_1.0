@@ -1,0 +1,47 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Group
+ *
+ * @ORM\Table(name="group")
+ * @ORM\Entity
+ */
+class Group
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="string", length=45, nullable=true)
+     */
+    private $description;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="year", type="string", length=45, nullable=true)
+     */
+    private $year;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="school", type="string", length=45, nullable=true)
+     */
+    private $school;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idgroup", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idgroup;
+
+
+}
+

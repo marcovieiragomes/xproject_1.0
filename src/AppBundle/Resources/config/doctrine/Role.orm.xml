@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Role" table="role">
+    <indexes>
+      <index name="fk_role_student1_idx" columns="student_idsubject"/>
+      <index name="fk_role_professor1_idx" columns="professor_idprofessor"/>
+    </indexes>
+    <id name="idroles" type="integer" column="idroles">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="rolescol" type="string" column="rolescol" length="45" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <many-to-one field="studentsubject" target-entity="Student" fetch="LAZY">
+      <join-columns>
+        <join-column name="student_idsubject" referenced-column-name="idsubject"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="professorprofessor" target-entity="Professor" fetch="LAZY">
+      <join-columns>
+        <join-column name="professor_idprofessor" referenced-column-name="idprofessor"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

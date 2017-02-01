@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Socialanalysis" table="socialanalysis">
+    <indexes>
+      <index name="fk_socialanalysis_student1_idx" columns="student_idsubject"/>
+      <index name="fk_socialanalysis_student2_idx" columns="student_idsubject1"/>
+    </indexes>
+    <id name="idsocialanalysis" type="integer" column="idsocialanalysis">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="hidrance" type="integer" column="hidrance" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="friendship1" type="integer" column="friendship1" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="friendship2" type="integer" column="friendship2" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="advice" type="integer" column="advice" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="confidence" type="integer" column="confidence" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="experimentIdexperiment" type="integer" column="experiment_idexperiment" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <many-to-one field="studentsubject1" target-entity="Student" fetch="LAZY">
+      <join-columns>
+        <join-column name="student_idsubject1" referenced-column-name="idsubject"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="studentsubject" target-entity="Student" fetch="LAZY">
+      <join-columns>
+        <join-column name="student_idsubject" referenced-column-name="idsubject"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

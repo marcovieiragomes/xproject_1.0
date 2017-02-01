@@ -1,0 +1,89 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Test
+ *
+ * @ORM\Table(name="test", indexes={@ORM\Index(name="fk_test_professor1_idx", columns={"professor_idprofessor"}), @ORM\Index(name="fk_test_socialanalysis1_idx", columns={"socialanalysis_idsocialanalysis"})})
+ * @ORM\Entity
+ */
+class Test
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="string", length=45, nullable=true)
+     */
+    private $description;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="locale", type="string", length=45, nullable=true)
+     */
+    private $locale;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date", type="datetime", nullable=true)
+     */
+    private $date;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idtest", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idtest;
+
+    /**
+     * @var \AppBundle\Entity\Professor
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Professor")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="professor_idprofessor", referencedColumnName="idprofessor")
+     * })
+     */
+    private $professorprofessor;
+
+    /**
+     * @var \AppBundle\Entity\Socialanalysis
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Socialanalysis")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="socialanalysis_idsocialanalysis", referencedColumnName="idsocialanalysis")
+     * })
+     */
+    private $socialanalysissocialanalysis;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Question", inversedBy="testtest")
+     * @ORM\JoinTable(name="test_has_question",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="test_idtest", referencedColumnName="idtest")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="question_idquestion", referencedColumnName="idquestion")
+     *   }
+     * )
+     */
+    private $questionquestion;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->questionquestion = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+}
+

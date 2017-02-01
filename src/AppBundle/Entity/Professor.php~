@@ -1,0 +1,43 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Professor
+ *
+ * @ORM\Table(name="professor", indexes={@ORM\Index(name="fk_professor_evaluator1_idx", columns={"evaluator_idevaluator"})})
+ * @ORM\Entity
+ */
+class Professor
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=45, nullable=true)
+     */
+    private $name;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idprofessor", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idprofessor;
+
+    /**
+     * @var \AppBundle\Entity\Evaluator
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Evaluator")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="evaluator_idevaluator", referencedColumnName="idevaluator")
+     * })
+     */
+    private $evaluatorevaluator;
+
+
+}
+

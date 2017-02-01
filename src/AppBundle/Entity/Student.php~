@@ -1,0 +1,84 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Student
+ *
+ * @ORM\Table(name="student", indexes={@ORM\Index(name="fk_subject_test1_idx", columns={"test_idtest"}), @ORM\Index(name="fk_student_evaluator1_idx", columns={"evaluator_idevaluator"}), @ORM\Index(name="fk_student_class1_idx", columns={"group_idgroup"})})
+ * @ORM\Entity
+ */
+class Student
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=100, nullable=true)
+     */
+    private $name;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="age", type="integer", nullable=true)
+     */
+    private $age;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="gender", type="string", length=45, nullable=true)
+     */
+    private $gender;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="code", type="string", length=45, nullable=true)
+     */
+    private $code;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idsubject", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idsubject;
+
+    /**
+     * @var \AppBundle\Entity\Test
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Test")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="test_idtest", referencedColumnName="idtest")
+     * })
+     */
+    private $testtest;
+
+    /**
+     * @var \AppBundle\Entity\Evaluator
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Evaluator")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="evaluator_idevaluator", referencedColumnName="idevaluator")
+     * })
+     */
+    private $evaluatorevaluator;
+
+    /**
+     * @var \AppBundle\Entity\Group
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Group")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="group_idgroup", referencedColumnName="idgroup")
+     * })
+     */
+    private $groupgroup;
+
+
+}
+

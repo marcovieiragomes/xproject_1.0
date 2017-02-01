@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Answer" table="answer">
+    <indexes>
+      <index name="fk_answer_test_has_question1_idx" columns="test_has_question_test_idtest,test_has_question_question_idquestion"/>
+    </indexes>
+    <id name="idanswer" type="integer" column="idanswer">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="text" type="text" column="text" length="16777215" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="ambientVariables" type="string" column="ambient-variables" length="45" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="time" type="datetime" column="time" nullable="true"/>
+    <many-to-one field="testHasQuestionTesttest" target-entity="TestHasQuestion" fetch="LAZY">
+      <join-columns>
+        <join-column name="test_has_question_test_idtest" referenced-column-name="test_idtest"/>
+        <join-column name="test_has_question_question_idquestion" referenced-column-name="question_idquestion"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

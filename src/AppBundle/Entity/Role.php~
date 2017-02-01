@@ -1,0 +1,53 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Role
+ *
+ * @ORM\Table(name="role", indexes={@ORM\Index(name="fk_role_student1_idx", columns={"student_idsubject"}), @ORM\Index(name="fk_role_professor1_idx", columns={"professor_idprofessor"})})
+ * @ORM\Entity
+ */
+class Role
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="rolescol", type="string", length=45, nullable=true)
+     */
+    private $rolescol;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idroles", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idroles;
+
+    /**
+     * @var \AppBundle\Entity\Student
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Student")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="student_idsubject", referencedColumnName="idsubject")
+     * })
+     */
+    private $studentsubject;
+
+    /**
+     * @var \AppBundle\Entity\Professor
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Professor")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="professor_idprofessor", referencedColumnName="idprofessor")
+     * })
+     */
+    private $professorprofessor;
+
+
+}
+

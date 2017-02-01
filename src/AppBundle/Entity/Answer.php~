@@ -1,0 +1,58 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Answer
+ *
+ * @ORM\Table(name="answer", indexes={@ORM\Index(name="fk_answer_test_has_question1_idx", columns={"test_has_question_test_idtest", "test_has_question_question_idquestion"})})
+ * @ORM\Entity
+ */
+class Answer
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="text", type="text", length=16777215, nullable=true)
+     */
+    private $text;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ambient-variables", type="string", length=45, nullable=true)
+     */
+    private $ambientVariables;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="time", type="datetime", nullable=true)
+     */
+    private $time;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idanswer", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idanswer;
+
+    /**
+     * @var \AppBundle\Entity\TestHasQuestion
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\TestHasQuestion")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="test_has_question_test_idtest", referencedColumnName="test_idtest"),
+     *   @ORM\JoinColumn(name="test_has_question_question_idquestion", referencedColumnName="question_idquestion")
+     * })
+     */
+    private $testHasQuestionTesttest;
+
+
+}
+

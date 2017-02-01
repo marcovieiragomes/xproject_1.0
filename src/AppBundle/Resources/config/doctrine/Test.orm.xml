@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Test" table="test">
+    <indexes>
+      <index name="fk_test_professor1_idx" columns="professor_idprofessor"/>
+      <index name="fk_test_socialanalysis1_idx" columns="socialanalysis_idsocialanalysis"/>
+    </indexes>
+    <id name="idtest" type="integer" column="idtest">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="description" type="string" column="description" length="45" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="locale" type="string" column="locale" length="45" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="date" type="datetime" column="date" nullable="true"/>
+    <many-to-one field="professorprofessor" target-entity="Professor" fetch="LAZY">
+      <join-columns>
+        <join-column name="professor_idprofessor" referenced-column-name="idprofessor"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="socialanalysissocialanalysis" target-entity="Socialanalysis" fetch="LAZY">
+      <join-columns>
+        <join-column name="socialanalysis_idsocialanalysis" referenced-column-name="idsocialanalysis"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-many field="questionquestion" target-entity="Question" inversed-by="testtest" fetch="LAZY">
+      <join-table name="test_has_question">
+        <join-columns>
+          <join-column name="test_idtest" referenced-column-name="idtest"/>
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="question_idquestion" referenced-column-name="idquestion"/>
+        </inverse-join-columns>
+      </join-table>
+    </many-to-many>
+  </entity>
+</doctrine-mapping>
