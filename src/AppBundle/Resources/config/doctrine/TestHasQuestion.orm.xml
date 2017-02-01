@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\TestHasQuestion" table="test_has_question">
+    <indexes>
+      <index name="fk_test_has_question_question1_idx" columns="question_idquestion"/>
+      <index name="fk_test_has_question_test_idx" columns="test_idtest"/>
+    </indexes>
+    <id name="idtestHasQuestion" type="integer" column="idtest_has_question">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="score" type="integer" column="score" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="usesstressors" type="binary" column="usesStressors" nullable="true"/>
+    <many-to-one field="questionquestion" target-entity="Question" fetch="LAZY">
+      <join-columns>
+        <join-column name="question_idquestion" referenced-column-name="idquestion"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="testtest" target-entity="Test" fetch="LAZY">
+      <join-columns>
+        <join-column name="test_idtest" referenced-column-name="idtest"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

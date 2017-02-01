@@ -14,6 +14,5 @@
         <option name="unsigned"/>
       </options>
     </field>
-    <many-to-many field="testtest" target-entity="Test" mapped-by="questionquestion" fetch="LAZY"/>
   </entity>
 </doctrine-mapping>

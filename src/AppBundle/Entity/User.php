@@ -3,7 +3,6 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 
 /**
  * User
@@ -11,7 +10,7 @@ use Symfony\Component\Security\Core\User\AdvancedUserInterface;
  * @ORM\Table(name="user", indexes={@ORM\Index(name="fk_user_role1_idx", columns={"role_idroles"})})
  * @ORM\Entity
  */
-class User implements AdvancedUserInterface, \Serializable
+class User
 {
     /**
      * @var string
@@ -26,19 +25,6 @@ class User implements AdvancedUserInterface, \Serializable
      * @ORM\Column(name="password", type="string", length=65, nullable=true)
      */
     private $password;
-
-
-    private $plainPassword;
-
-    public function getPlainPassword()
-    {
-        return $this->plainPassword;
-    }
-
-    public function setPlainPassword($password)
-    {
-        $this->plainPassword = $password;
-    }
 
     /**
      * @var binary
@@ -203,74 +189,5 @@ class User implements AdvancedUserInterface, \Serializable
     public function getRoleroles()
     {
         return $this->roleroles;
-    }
-
-    public function getSalt()
-    {
-        // The bcrypt algorithm doesn't require a separate salt.
-        // You *may* need a real salt if you choose a different encoder.
-        return null;
-    }
-
-    public function __construct()
-    {
-        $this->isActive = true;
-        // may not be needed, see section on salt below
-        // $this->salt = md5(uniqid(null, true));
-    }
-    public function getRoles()
-    {
-        return array('ROLE_USER');
-    }
-
-    public function eraseCredentials()
-    {
-    }
-
-    /** @see \Serializable::serialize() */
-    public function serialize()
-    {
-        return serialize(array(
-            $this->iduser,
-            $this->username,
-            $this->password,
-            $this->isactive,
-            // see section on salt below
-            // $this->salt,
-        ));
-    }
-
-    /** @see \Serializable::unserialize() */
-    public function unserialize($serialized)
-    {
-        list (
-            $this->iduser,
-            $this->username,
-            $this->password,
-            $this->isactive,
-            // see section on salt below
-            // $this->salt
-            ) = unserialize($serialized);
-    }
-
-
-    public function isAccountNonExpired()
-    {
-        return true;
-    }
-
-    public function isAccountNonLocked()
-    {
-        return true;
-    }
-
-    public function isCredentialsNonExpired()
-    {
-        return true;
-    }
-
-    public function isEnabled()
-    {
-        return $this->isactive;
     }
 }

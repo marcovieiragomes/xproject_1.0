@@ -35,20 +35,6 @@ class Question
      */
     private $idquestion;
 
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Test", mappedBy="questionquestion")
-     */
-    private $testtest;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->testtest = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
 }
 

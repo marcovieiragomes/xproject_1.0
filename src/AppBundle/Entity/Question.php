@@ -35,20 +35,6 @@ class Question
      */
     private $idquestion;
 
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Test", mappedBy="questionquestion")
-     */
-    private $testtest;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->testtest = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
 
     /**
@@ -107,39 +93,5 @@ class Question
     public function getIdquestion()
     {
         return $this->idquestion;
-    }
-
-    /**
-     * Add testtest
-     *
-     * @param \AppBundle\Entity\Test $testtest
-     *
-     * @return Question
-     */
-    public function addTesttest(\AppBundle\Entity\Test $testtest)
-    {
-        $this->testtest[] = $testtest;
-
-        return $this;
-    }
-
-    /**
-     * Remove testtest
-     *
-     * @param \AppBundle\Entity\Test $testtest
-     */
-    public function removeTesttest(\AppBundle\Entity\Test $testtest)
-    {
-        $this->testtest->removeElement($testtest);
-    }
-
-    /**
-     * Get testtest
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getTesttest()
-    {
-        return $this->testtest;
     }
 }

@@ -50,7 +50,7 @@ class Socialanalysis
     /**
      * @var integer
      *
-     * @ORM\Column(name="experiment_idexperiment", type="integer", nullable=false)
+     * @ORM\Column(name="experiment_idexperiment", type="integer", nullable=true)
      */
     private $experimentIdexperiment;
 

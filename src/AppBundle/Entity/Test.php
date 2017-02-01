@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Test
  *
- * @ORM\Table(name="test", indexes={@ORM\Index(name="fk_test_professor1_idx", columns={"professor_idprofessor"}), @ORM\Index(name="fk_test_socialanalysis1_idx", columns={"socialanalysis_idsocialanalysis"})})
+ * @ORM\Table(name="test", indexes={@ORM\Index(name="fk_test_professor1_idx", columns={"professor_idprofessor"})})
  * @ORM\Entity
  */
 class Test
@@ -52,38 +52,6 @@ class Test
      */
     private $professorprofessor;
 
-    /**
-     * @var \AppBundle\Entity\Socialanalysis
-     *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Socialanalysis")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="socialanalysis_idsocialanalysis", referencedColumnName="idsocialanalysis")
-     * })
-     */
-    private $socialanalysissocialanalysis;
-
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Question", inversedBy="testtest")
-     * @ORM\JoinTable(name="test_has_question",
-     *   joinColumns={
-     *     @ORM\JoinColumn(name="test_idtest", referencedColumnName="idtest")
-     *   },
-     *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="question_idquestion", referencedColumnName="idquestion")
-     *   }
-     * )
-     */
-    private $questionquestion;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->questionquestion = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
 
     /**
@@ -190,63 +158,5 @@ class Test
     public function getProfessorprofessor()
     {
         return $this->professorprofessor;
-    }
-
-    /**
-     * Set socialanalysissocialanalysis
-     *
-     * @param \AppBundle\Entity\Socialanalysis $socialanalysissocialanalysis
-     *
-     * @return Test
-     */
-    public function setSocialanalysissocialanalysis(\AppBundle\Entity\Socialanalysis $socialanalysissocialanalysis = null)
-    {
-        $this->socialanalysissocialanalysis = $socialanalysissocialanalysis;
-
-        return $this;
-    }
-
-    /**
-     * Get socialanalysissocialanalysis
-     *
-     * @return \AppBundle\Entity\Socialanalysis
-     */
-    public function getSocialanalysissocialanalysis()
-    {
-        return $this->socialanalysissocialanalysis;
-    }
-
-    /**
-     * Add questionquestion
-     *
-     * @param \AppBundle\Entity\Question $questionquestion
-     *
-     * @return Test
-     */
-    public function addQuestionquestion(\AppBundle\Entity\Question $questionquestion)
-    {
-        $this->questionquestion[] = $questionquestion;
-
-        return $this;
-    }
-
-    /**
-     * Remove questionquestion
-     *
-     * @param \AppBundle\Entity\Question $questionquestion
-     */
-    public function removeQuestionquestion(\AppBundle\Entity\Question $questionquestion)
-    {
-        $this->questionquestion->removeElement($questionquestion);
-    }
-
-    /**
-     * Get questionquestion
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getQuestionquestion()
-    {
-        return $this->questionquestion;
     }
 }

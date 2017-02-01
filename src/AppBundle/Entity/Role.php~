@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Role
  *
- * @ORM\Table(name="role", indexes={@ORM\Index(name="fk_role_student1_idx", columns={"student_idsubject"}), @ORM\Index(name="fk_role_professor1_idx", columns={"professor_idprofessor"})})
+ * @ORM\Table(name="role")
  * @ORM\Entity
  */
 class Role
@@ -27,26 +27,6 @@ class Role
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $idroles;
-
-    /**
-     * @var \AppBundle\Entity\Student
-     *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Student")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="student_idsubject", referencedColumnName="idsubject")
-     * })
-     */
-    private $studentsubject;
-
-    /**
-     * @var \AppBundle\Entity\Professor
-     *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Professor")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="professor_idprofessor", referencedColumnName="idprofessor")
-     * })
-     */
-    private $professorprofessor;
 
 
 }

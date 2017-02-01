@@ -1,0 +1,60 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * TestHasQuestion
+ *
+ * @ORM\Table(name="test_has_question", indexes={@ORM\Index(name="fk_test_has_question_question1_idx", columns={"question_idquestion"}), @ORM\Index(name="fk_test_has_question_test_idx", columns={"test_idtest"})})
+ * @ORM\Entity
+ */
+class TestHasQuestion
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="score", type="integer", nullable=true)
+     */
+    private $score;
+
+    /**
+     * @var binary
+     *
+     * @ORM\Column(name="usesStressors", type="binary", nullable=true)
+     */
+    private $usesstressors;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idtest_has_question", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idtestHasQuestion;
+
+    /**
+     * @var \AppBundle\Entity\Question
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Question")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="question_idquestion", referencedColumnName="idquestion")
+     * })
+     */
+    private $questionquestion;
+
+    /**
+     * @var \AppBundle\Entity\Test
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Test")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="test_idtest", referencedColumnName="idtest")
+     * })
+     */
+    private $testtest;
+
+
+}
+

@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Answer
  *
- * @ORM\Table(name="answer", indexes={@ORM\Index(name="fk_answer_test_has_question1_idx", columns={"test_has_question_test_idtest", "test_has_question_question_idquestion"})})
+ * @ORM\Table(name="answer", indexes={@ORM\Index(name="fk_answer_test_has_question1_idx", columns={"test_has_questiont_idtest_has_question"})})
  * @ORM\Entity
  */
 class Answer
@@ -22,7 +22,7 @@ class Answer
     /**
      * @var string
      *
-     * @ORM\Column(name="ambient-variables", type="string", length=45, nullable=true)
+     * @ORM\Column(name="ambient_variables", type="string", length=45, nullable=true)
      */
     private $ambientVariables;
 
@@ -47,11 +47,10 @@ class Answer
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\TestHasQuestion")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="test_has_question_test_idtest", referencedColumnName="test_idtest"),
-     *   @ORM\JoinColumn(name="test_has_question_question_idquestion", referencedColumnName="question_idquestion")
+     *   @ORM\JoinColumn(name="test_has_questiont_idtest_has_question", referencedColumnName="test_idtest")
      * })
      */
-    private $testHasQuestionTesttest;
+    private $testHasQuestionttestHasQuestion;
 
 
 
@@ -138,26 +137,26 @@ class Answer
     }
 
     /**
-     * Set testHasQuestionTesttest
+     * Set testHasQuestionttestHasQuestion
      *
-     * @param \AppBundle\Entity\TestHasQuestion $testHasQuestionTesttest
+     * @param \AppBundle\Entity\TestHasQuestion $testHasQuestionttestHasQuestion
      *
      * @return Answer
      */
-    public function setTestHasQuestionTesttest(\AppBundle\Entity\TestHasQuestion $testHasQuestionTesttest = null)
+    public function setTestHasQuestionttestHasQuestion(\AppBundle\Entity\TestHasQuestion $testHasQuestionttestHasQuestion = null)
     {
-        $this->testHasQuestionTesttest = $testHasQuestionTesttest;
+        $this->testHasQuestionttestHasQuestion = $testHasQuestionttestHasQuestion;
 
         return $this;
     }
 
     /**
-     * Get testHasQuestionTesttest
+     * Get testHasQuestionttestHasQuestion
      *
      * @return \AppBundle\Entity\TestHasQuestion
      */
-    public function getTestHasQuestionTesttest()
+    public function getTestHasQuestionttestHasQuestion()
     {
-        return $this->testHasQuestionTesttest;
+        return $this->testHasQuestionttestHasQuestion;
     }
 }
