@@ -22,7 +22,7 @@ class Evaluation
     /**
      * @var string
      *
-     * @ORM\Column(name="criterion_accomplished", type="string", length=45, nullable=false)
+     * @ORM\Column(name="criterion_accomplished", type="string", length=45, nullable=true)
      */
     private $criterionAccomplished;
 

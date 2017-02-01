@@ -1,33 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1e272f73-d8ce-4aed-b33e-29dcb9a1d236" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db-script" />
+    <list default="true" id="1e272f73-d8ce-4aed-b33e-29dcb9a1d236" name="Default" comment="4">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Resources/views/registration/register.html.twig" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/RegistrationController.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/AppBundle/Form/UserType.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config/security.yml" afterPath="$PROJECT_DIR$/app/config/security.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Entity/Answer.php" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/Answer.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Entity/Criterion.php" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/Criterion.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/xproject_1.0.iml" afterPath="$PROJECT_DIR$/.idea/xproject_1.0.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Entity/Evaluation.php" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/Evaluation.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Entity/Evaluator.php" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/Evaluator.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Entity/Group.php" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/Group.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Entity/Professor.php" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/Professor.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Entity/Question.php" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/Question.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Entity/Role.php" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/Role.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Entity/Socialanalysis.php" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/Socialanalysis.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Entity/Student.php" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/Student.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Entity/Test.php" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/Test.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Entity/User.php" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/User.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/Answer.orm.xml" afterPath="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/Answer.orm.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/Criterion.orm.xml" afterPath="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/Criterion.orm.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/Evaluation.orm.xml" afterPath="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/Evaluation.orm.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/Evaluator.orm.xml" afterPath="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/Evaluator.orm.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/Group.orm.xml" afterPath="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/Group.orm.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/Professor.orm.xml" afterPath="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/Professor.orm.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/Question.orm.xml" afterPath="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/Question.orm.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/Role.orm.xml" afterPath="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/Role.orm.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/Socialanalysis.orm.xml" afterPath="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/Socialanalysis.orm.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/Student.orm.xml" afterPath="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/Student.orm.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/Test.orm.xml" afterPath="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/Test.orm.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/User.orm.xml" afterPath="$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/User.orm.xml" />
     </list>
     <ignored path="xproject_1.0.iws" />
@@ -72,28 +56,55 @@
       <file leaf-file-name="security.yml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/config/security.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="65">
-              <caret line="15" column="48" selection-start-line="15" selection-start-column="48" selection-end-line="15" selection-end-column="48" />
+            <state relative-caret-position="102">
+              <caret line="6" column="27" selection-start-line="6" selection-start-column="27" selection-end-line="6" selection-end-column="33" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="db-script" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/db-script">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1332">
-              <caret line="276" column="0" selection-start-line="276" selection-start-column="0" selection-end-line="276" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="User.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="User.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/User.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="337">
-              <caret line="239" column="5" selection-start-line="239" selection-start-column="5" selection-end-line="239" selection-end-column="5" />
+            <state relative-caret-position="716">
+              <caret line="233" column="26" selection-start-line="233" selection-start-column="26" selection-end-line="233" selection-end-column="26" />
+              <folding>
+                <element signature="e#36#68#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserType.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Form/UserType.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="26" column="62" selection-start-line="26" selection-start-column="62" selection-end-line="26" selection-end-column="62" />
+              <folding>
+                <element signature="e#7#88#0#PHP" expanded="true" />
+                <element signature="e#116#142#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RegistrationController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/RegistrationController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="39" column="34" selection-start-line="39" selection-start-column="34" selection-end-line="39" selection-end-column="34" />
+              <folding>
+                <element signature="e#122#150#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="register.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Resources/views/registration/register.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" column="20" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -144,9 +155,12 @@
         <option value="$PROJECT_DIR$/app/config/parameters.yml" />
         <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/security/login.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/SecurityController.php" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Entity/User.php" />
         <option value="$PROJECT_DIR$/app/config/security.yml" />
         <option value="$PROJECT_DIR$/db-script" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Form/UserType.php" />
+        <option value="$PROJECT_DIR$/app/Resources/views/registration/register.html.twig" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Controller/RegistrationController.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Entity/User.php" />
       </list>
     </option>
   </component>
@@ -217,7 +231,193 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="xproject_1.0" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="xproject_1.0" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AppBundle" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="xproject_1.0" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="xproject_1.0" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AppBundle" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Form" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="xproject_1.0" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="xproject_1.0" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AppBundle" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Entity" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="xproject_1.0" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="xproject_1.0" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AppBundle" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Controller" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="xproject_1.0" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="xproject_1.0" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bin" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="xproject_1.0" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="xproject_1.0" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="xproject_1.0" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="xproject_1.0" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="xproject_1.0" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="xproject_1.0" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="registration" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="xproject_1.0" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="xproject_1.0" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="default" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -236,6 +436,197 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\xproject_1.0\app\Resources\views\security" />
     </key>
+  </component>
+  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
+    <UpdatedFiles>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Updated from server" />
+        <option name="myStatusName" value="Changed on server" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="CHANGED_ON_SERVER" />
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Updated" />
+          <option name="myStatusName" value="Changed" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="UPDATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/.gitignore</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/copyright/profiles_settings.xml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/modules.xml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/vcs.xml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/workspace.xml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/xproject_1.0.iml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/README.md</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/.htaccess</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/AppCache.php</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/AppKernel.php</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/Resources/views/base.html.twig</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/Resources/views/default/index.html.twig</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/Resources/views/security/login.html.twig</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/autoload.php</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/config/config.yml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/config/config_dev.yml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/config/config_prod.yml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/config/config_test.yml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/config/parameters.yml.dist</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/config/routing.yml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/config/routing_dev.yml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/config/security.yml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/config/services.yml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/console</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/symfony_requirements</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/composer.json</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/composer.lock</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/db-script</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/phpunit.xml.dist</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/.htaccess</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/AppBundle/AppBundle.php</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/AppBundle/Controller/SecurityController.php</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/AppBundle/Entity/Answer.php</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/AppBundle/Entity/Answer.php~</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/AppBundle/Entity/Criterion.php</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/AppBundle/Entity/Criterion.php~</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/AppBundle/Entity/Evaluation.php</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/AppBundle/Entity/Evaluation.php~</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/AppBundle/Entity/Evaluator.php</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/AppBundle/Entity/Evaluator.php~</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/AppBundle/Entity/Group.php</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/AppBundle/Entity/Group.php~</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/AppBundle/Entity/Professor.php</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/AppBundle/Entity/Professor.php~</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/AppBundle/Entity/Question.php</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/AppBundle/Entity/Question.php~</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/AppBundle/Entity/Role.php</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/AppBundle/Entity/Role.php~</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/AppBundle/Entity/Socialanalysis.php</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/AppBundle/Entity/Socialanalysis.php~</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/AppBundle/Entity/Student.php</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/AppBundle/Entity/Student.php~</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/AppBundle/Entity/Test.php</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/AppBundle/Entity/Test.php~</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/AppBundle/Entity/User.php</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/AppBundle/Entity/User.php~</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/Answer.orm.xml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/Criterion.orm.xml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/Evaluation.orm.xml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/Evaluator.orm.xml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/Group.orm.xml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/Professor.orm.xml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/Question.orm.xml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/Role.orm.xml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/Socialanalysis.orm.xml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/Student.orm.xml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/Test.orm.xml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/AppBundle/Resources/config/doctrine/User.orm.xml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/tests/AppBundle/Controller/DefaultControllerTest.php</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/var/SymfonyRequirements.php</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/var/cache/.gitkeep</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/var/logs/.gitkeep</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/var/sessions/.gitkeep</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/.htaccess</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/app.php</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/app_dev.php</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/apple-touch-icon.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/config.php</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/favicon.ico</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/web/robots.txt</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Created" />
+          <option name="myStatusName" value="Created" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="CREATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/composer.phar</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Deleted" />
+          <option name="myStatusName" value="Deleted" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="true" />
+          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Restored" />
+          <option name="myStatusName" value="Will be restored" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="RESTORED" />
+        </FILE-GROUP>
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Modified" />
+        <option name="myStatusName" value="Modified" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MODIFIED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Skipped" />
+        <option name="myStatusName" value="Skipped" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SKIPPED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with conflicts" />
+        <option name="myStatusName" value="Will be merged with conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_CONFLICTS" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with tree conflicts" />
+        <option name="myStatusName" value="Merged with tree conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with property conflicts" />
+        <option name="myStatusName" value="Will be merged with property conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged" />
+        <option name="myStatusName" value="Will be merged" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Not in repository" />
+        <option name="myStatusName" value="Not in repository" />
+        <option name="mySupportsDeletion" value="true" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="UNKNOWN" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally added" />
+        <option name="myStatusName" value="Locally added" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_ADDED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally removed" />
+        <option name="myStatusName" value="Locally removed" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_REMOVED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Switched" />
+        <option name="myStatusName" value="Switched" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SWITCHED" />
+      </FILE-GROUP>
+    </UpdatedFiles>
   </component>
   <component name="RunManager">
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
@@ -296,7 +687,7 @@
       <option name="presentableId" value="Default" />
       <updated>1485938765844</updated>
       <workItem from="1485938767599" duration="7825000" />
-      <workItem from="1485950650003" duration="843000" />
+      <workItem from="1485950650003" duration="6082000" />
     </task>
     <task id="LOCAL-00001" summary="2">
       <created>1485945553939</created>
@@ -305,21 +696,28 @@
       <option name="project" value="LOCAL" />
       <updated>1485945553939</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="4">
+      <created>1485951494586</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1485951494586</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8668000" />
+    <option name="totallyTimeSpent" value="13907000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24963397" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24963397" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.329653" sideWeight="0.5058565" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329653" sideWeight="0.5058565" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.329653" sideWeight="0.4941435" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.329653" sideWeight="0.4941435" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -432,7 +830,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/security/login.html.twig" />
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/security/login.html.twig">
+    <entry file="file://$PROJECT_DIR$/app/config/SecurityController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -440,7 +838,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/config/SecurityController.php">
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db-script">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1332">
+          <caret line="276" column="0" selection-start-line="276" selection-start-column="0" selection-end-line="276" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/security/login.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -458,35 +872,50 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php">
+    <entry file="file://$PROJECT_DIR$/app/config/security.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="102">
+          <caret line="6" column="27" selection-start-line="6" selection-start-column="27" selection-end-line="6" selection-end-column="33" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/registration/register.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="20" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Form/UserType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="26" column="62" selection-start-line="26" selection-start-column="62" selection-end-line="26" selection-end-column="62" />
+          <folding>
+            <element signature="e#7#88#0#PHP" expanded="true" />
+            <element signature="e#116#142#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/RegistrationController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="39" column="34" selection-start-line="39" selection-start-column="34" selection-end-line="39" selection-end-column="34" />
+          <folding>
+            <element signature="e#122#150#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/User.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="337">
-          <caret line="239" column="5" selection-start-line="239" selection-start-column="5" selection-end-line="239" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/config/security.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="65">
-          <caret line="15" column="48" selection-start-line="15" selection-start-column="48" selection-end-line="15" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/db-script">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1332">
-          <caret line="276" column="0" selection-start-line="276" selection-start-column="0" selection-end-line="276" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="716">
+          <caret line="233" column="26" selection-start-line="233" selection-start-column="26" selection-end-line="233" selection-end-column="26" />
+          <folding>
+            <element signature="e#36#68#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
