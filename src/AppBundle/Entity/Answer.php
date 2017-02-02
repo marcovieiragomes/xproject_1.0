@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Answer
  *
- * @ORM\Table(name="answer", indexes={@ORM\Index(name="fk_answer_test_has_question1_idx", columns={"test_has_questiont_idtest_has_question"})})
+ * @ORM\Table(name="answer", indexes={@ORM\Index(name="fk_answer_test_has_question1_idx", columns={"test_has_questiont_idtest_has_question"}), @ORM\Index(name="fk_answer_2_idx", columns={"idstudent"})})
  * @ORM\Entity
  */
 class Answer
@@ -41,6 +41,16 @@ class Answer
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $idanswer;
+
+    /**
+     * @var \AppBundle\Entity\Student
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Student")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idstudent", referencedColumnName="idsubject")
+     * })
+     */
+    private $idstudent;
 
     /**
      * @var \AppBundle\Entity\TestHasQuestion
@@ -134,6 +144,30 @@ class Answer
     public function getIdanswer()
     {
         return $this->idanswer;
+    }
+
+    /**
+     * Set idstudent
+     *
+     * @param \AppBundle\Entity\Student $idstudent
+     *
+     * @return Answer
+     */
+    public function setIdstudent(\AppBundle\Entity\Student $idstudent = null)
+    {
+        $this->idstudent = $idstudent;
+
+        return $this;
+    }
+
+    /**
+     * Get idstudent
+     *
+     * @return \AppBundle\Entity\Student
+     */
+    public function getIdstudent()
+    {
+        return $this->idstudent;
     }
 
     /**

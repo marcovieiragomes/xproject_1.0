@@ -3,6 +3,7 @@
   <entity name="AppBundle\Entity\Answer" table="answer">
     <indexes>
       <index name="fk_answer_test_has_question1_idx" columns="test_has_questiont_idtest_has_question"/>
+      <index name="fk_answer_2_idx" columns="idstudent"/>
     </indexes>
     <id name="idanswer" type="integer" column="idanswer">
       <generator strategy="IDENTITY"/>
@@ -18,6 +19,11 @@
       </options>
     </field>
     <field name="time" type="datetime" column="time" nullable="true"/>
+    <many-to-one field="idstudent" target-entity="Student" fetch="LAZY">
+      <join-columns>
+        <join-column name="idstudent" referenced-column-name="idsubject"/>
+      </join-columns>
+    </many-to-one>
     <many-to-one field="testHasQuestionttestHasQuestion" target-entity="TestHasQuestion" fetch="LAZY">
       <join-columns>
         <join-column name="test_has_questiont_idtest_has_question" referenced-column-name="test_idtest"/>

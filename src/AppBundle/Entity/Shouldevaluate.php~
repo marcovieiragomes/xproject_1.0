@@ -1,0 +1,46 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Shouldevaluate
+ *
+ * @ORM\Table(name="shouldevaluate", indexes={@ORM\Index(name="fk_shouldevaluate_1_idx", columns={"idevaluator"}), @ORM\Index(name="fk_shouldevaluate_2_idx", columns={"idsubject"})})
+ * @ORM\Entity
+ */
+class Shouldevaluate
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idshouldevaluate", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idshouldevaluate;
+
+    /**
+     * @var \AppBundle\Entity\Student
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Student")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idsubject", referencedColumnName="idsubject")
+     * })
+     */
+    private $idsubject;
+
+    /**
+     * @var \AppBundle\Entity\Evaluator
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Evaluator")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idevaluator", referencedColumnName="idevaluator")
+     * })
+     */
+    private $idevaluator;
+
+
+}
+

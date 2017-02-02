@@ -33,7 +33,7 @@ CREATE TABLE `answer` (
   PRIMARY KEY (`idanswer`),
   KEY `fk_answer_test_has_question1_idx` (`test_has_questiont_idtest_has_question`),
   CONSTRAINT `fk_answer_1` FOREIGN KEY (`test_has_questiont_idtest_has_question`) REFERENCES `test_has_question` (`test_idtest`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,7 +42,7 @@ CREATE TABLE `answer` (
 
 LOCK TABLES `answer` WRITE;
 /*!40000 ALTER TABLE `answer` DISABLE KEYS */;
-INSERT INTO `answer` VALUES (1,'done','TO-BE-DETERMINED','2017-02-02 11:48:16',1),(2,'done','TO-BE-DETERMINED','2017-02-02 11:49:14',1),(3,'done','TO-BE-DETERMINED','2017-02-02 11:54:57',1),(4,'done','TO-BE-DETERMINED','2017-02-02 11:56:46',1),(5,'new answer','TO-BE-DETERMINED','2017-02-02 11:58:47',1),(6,'new answer','TO-BE-DETERMINED','2017-02-02 11:59:17',1);
+INSERT INTO `answer` VALUES (8,'a1','TO-BE-DETERMINED','2017-02-02 12:54:04',1),(9,'another and we\'re done','TO-BE-DETERMINED','2017-02-02 12:54:38',2);
 /*!40000 ALTER TABLE `answer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -230,6 +230,35 @@ LOCK TABLES `role` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `shouldevaluate`
+--
+
+DROP TABLE IF EXISTS `shouldevaluate`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `shouldevaluate` (
+  `idshouldevaluate` int(11) NOT NULL,
+  `idevaluator` int(11) NOT NULL,
+  `idsubject` int(11) NOT NULL,
+  PRIMARY KEY (`idshouldevaluate`),
+  KEY `fk_shouldevaluate_1_idx` (`idevaluator`),
+  KEY `fk_shouldevaluate_2_idx` (`idsubject`),
+  CONSTRAINT `fk_shouldevaluate_1` FOREIGN KEY (`idevaluator`) REFERENCES `evaluator` (`idevaluator`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_shouldevaluate_2` FOREIGN KEY (`idsubject`) REFERENCES `student` (`idsubject`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `shouldevaluate`
+--
+
+LOCK TABLES `shouldevaluate` WRITE;
+/*!40000 ALTER TABLE `shouldevaluate` DISABLE KEYS */;
+INSERT INTO `shouldevaluate` VALUES (1,1,1),(2,1,2);
+/*!40000 ALTER TABLE `shouldevaluate` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `socialanalysis`
 --
 
@@ -286,7 +315,7 @@ CREATE TABLE `student` (
   CONSTRAINT `fk_student_class1` FOREIGN KEY (`group_idgroup`) REFERENCES `group` (`idgroup`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_student_evaluator1` FOREIGN KEY (`evaluator_idevaluator`) REFERENCES `evaluator` (`idevaluator`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_subject_test1` FOREIGN KEY (`test_idtest`) REFERENCES `test` (`idtest`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -295,7 +324,7 @@ CREATE TABLE `student` (
 
 LOCK TABLES `student` WRITE;
 /*!40000 ALTER TABLE `student` DISABLE KEYS */;
-INSERT INTO `student` VALUES (1,'paco',20,'M','11',1,2,1);
+INSERT INTO `student` VALUES (1,'paco',20,'M','11',1,2,1),(2,'joao',19,'M','10',1,2,1);
 /*!40000 ALTER TABLE `student` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -397,4 +426,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-02-02 12:21:14
+-- Dump completed on 2017-02-02 13:25:45

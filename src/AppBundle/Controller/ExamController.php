@@ -107,12 +107,13 @@ class ExamController extends Controller
             // F**K DOCTRINE AND SYMFONY
             $em = $this->getDoctrine()->getManager();
             $connection = $em->getConnection();
-            $statement = $connection->prepare("INSERT INTO answer(text, ambient_variables,time,test_has_questiont_idtest_has_question)
-                                                VALUES (:text,:ambient,:time,:testHQ) ");
+            $statement = $connection->prepare("INSERT INTO answer(text, ambient_variables,time,test_has_questiont_idtest_has_question,idstudent)
+                                                VALUES (:text,:ambient,:time,:testHQ,:idstudent) ");
             $statement->bindValue('text', $answer->getText());
             $statement->bindValue('ambient', $answer->getAmbientVariables());
             $statement->bindValue('time', date("Y-m-d H:i:s"));
             $statement->bindValue('testHQ', $currentTestHQ->getIdtestHasQuestion());
+            $statement->bindValue('idstudent', $IDStudent);
             $statement->execute();
 
             if (!$statement->rowCount())

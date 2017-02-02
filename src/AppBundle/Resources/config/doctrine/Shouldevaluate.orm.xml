@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Shouldevaluate" table="shouldevaluate">
+    <indexes>
+      <index name="fk_shouldevaluate_1_idx" columns="idevaluator"/>
+      <index name="fk_shouldevaluate_2_idx" columns="idsubject"/>
+    </indexes>
+    <id name="idshouldevaluate" type="integer" column="idshouldevaluate">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <many-to-one field="idsubject" target-entity="Student" fetch="LAZY">
+      <join-columns>
+        <join-column name="idsubject" referenced-column-name="idsubject"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idevaluator" target-entity="Evaluator" fetch="LAZY">
+      <join-columns>
+        <join-column name="idevaluator" referenced-column-name="idevaluator"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>
