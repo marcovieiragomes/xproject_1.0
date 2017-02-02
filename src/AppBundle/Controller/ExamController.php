@@ -45,8 +45,15 @@ class ExamController extends Controller
 
         if (!$results)
         {
-            //TODO - Show message
-            throw $this->createNotFoundException('No question found');
+            //TODO - Translate message
+            throw $this->createNotFoundException('You are done here');
+        }
+
+        $currentQuestion=0;
+        $totalQuestions=0;
+        foreach($results as $r)
+        {
+          $totalQuestions=$totalQuestions+1;
         }
 
         $testHQ=$results[0];
@@ -76,13 +83,33 @@ class ExamController extends Controller
             //TODO - WTF - This is a mandatory field, but when filled it crashes.
             $answer->setTestHasQuestionttestHasQuestion($testHQ);
 
-            $em->persist($answer);
-            $em->flush();
 
-            return $this->render('default/index.html.twig', array('base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR));
+            //$em->persist($answer);
+            // F**K DOCTRINE AND SYMFONY
+            $em = $this->getDoctrine()->getManager();
+            $connection = $em->getConnection();
+            $statement = $connection->prepare("INSERT INTO answer(text, ambient_variables,time,test_has_questiont_idtest_has_question)
+                                                VALUES (:text,:ambient,:time,:testHQ) ");
+            $statement->bindValue('text', $answer->getText());
+            $statement->bindValue('ambient', $answer->getAmbientVariables());
+            $statement->bindValue('time', date("Y-m-d H:i:s"));
+            $statement->bindValue('testHQ', $testHQ->getIdtestHasQuestion());
+            $statement->execute();
+
+            if (!$statement->rowCount())
+            {
+              //TODO - Translate message
+              throw $this->createNotFoundException('Something went wrong');
+            }
+
+            //$em->flush();
+
+            return $this->redirectToRoute('/exam/answer');
         }
 
         return $this->render('exam/answer.html.twig', array(
+            'currentQuestion' => $currentQuestion,
+            'totalQuestions' => $totalQuestions,
             'question_text' => $question->getText(),
             'form' => $form->createView(),
         ));

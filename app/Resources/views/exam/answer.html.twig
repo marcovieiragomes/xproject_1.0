@@ -1,15 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
-    <div id="wrapper">
-        <div id="container">
-          <h2>Question:</h2>
-          {{ question_text }}
-          {{ form_start(form) }}
-          {{ form_widget(form) }}
-          {{ form_end(form) }}
-        </div>
-    </div>
+{% block title %}
+    Question
+{% endblock %}
+
+{% block content %}
+    <h2>Question {{ currentQuestion }}/{{ totalQuestions }}:</h2>
+    {{ question_text }}
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
 {% endblock %}
 
 {% block stylesheets %}
