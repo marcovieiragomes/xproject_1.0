@@ -33,7 +33,7 @@ CREATE TABLE `answer` (
   PRIMARY KEY (`idanswer`),
   KEY `fk_answer_test_has_question1_idx` (`test_has_questiont_idtest_has_question`),
   CONSTRAINT `fk_answer_1` FOREIGN KEY (`test_has_questiont_idtest_has_question`) REFERENCES `test_has_question` (`test_idtest`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,6 +42,7 @@ CREATE TABLE `answer` (
 
 LOCK TABLES `answer` WRITE;
 /*!40000 ALTER TABLE `answer` DISABLE KEYS */;
+INSERT INTO `answer` VALUES (1,'done','TO-BE-DETERMINED','2017-02-02 11:48:16',1),(2,'done','TO-BE-DETERMINED','2017-02-02 11:49:14',1),(3,'done','TO-BE-DETERMINED','2017-02-02 11:54:57',1),(4,'done','TO-BE-DETERMINED','2017-02-02 11:56:46',1),(5,'new answer','TO-BE-DETERMINED','2017-02-02 11:58:47',1),(6,'new answer','TO-BE-DETERMINED','2017-02-02 11:59:17',1);
 /*!40000 ALTER TABLE `answer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -192,7 +193,7 @@ CREATE TABLE `question` (
   `text` mediumtext,
   `evaluation` int(11) DEFAULT NULL,
   PRIMARY KEY (`idquestion`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -201,7 +202,7 @@ CREATE TABLE `question` (
 
 LOCK TABLES `question` WRITE;
 /*!40000 ALTER TABLE `question` DISABLE KEYS */;
-INSERT INTO `question` VALUES (1,'this is what I ask',1);
+INSERT INTO `question` VALUES (1,'this is what I ask',1),(2,'this is a good one',1),(3,'from another test entirely',1);
 /*!40000 ALTER TABLE `question` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -314,7 +315,7 @@ CREATE TABLE `test` (
   PRIMARY KEY (`idtest`),
   KEY `fk_test_professor1_idx` (`professor_idprofessor`),
   CONSTRAINT `fk_test_professor1` FOREIGN KEY (`professor_idprofessor`) REFERENCES `professor` (`idprofessor`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -323,7 +324,7 @@ CREATE TABLE `test` (
 
 LOCK TABLES `test` WRITE;
 /*!40000 ALTER TABLE `test` DISABLE KEYS */;
-INSERT INTO `test` VALUES (1,'first_test',1,'pt','2017-01-01 00:00:00');
+INSERT INTO `test` VALUES (1,'first_test',1,'pt','2017-01-01 00:00:00'),(2,'some_other_test',1,'pt','2017-01-01 00:00:00');
 /*!40000 ALTER TABLE `test` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -354,7 +355,7 @@ CREATE TABLE `test_has_question` (
 
 LOCK TABLES `test_has_question` WRITE;
 /*!40000 ALTER TABLE `test_has_question` DISABLE KEYS */;
-INSERT INTO `test_has_question` VALUES (1,1,1,10,NULL);
+INSERT INTO `test_has_question` VALUES (1,1,1,10,NULL),(2,1,2,10,'1'),(3,2,3,10,NULL);
 /*!40000 ALTER TABLE `test_has_question` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -396,4 +397,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-02-01 17:36:57
+-- Dump completed on 2017-02-02 12:21:14

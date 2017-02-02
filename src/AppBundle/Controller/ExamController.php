@@ -24,7 +24,7 @@ class ExamController extends Controller
                                     JOIN s.testtest t
                                     WHERE s.idsubject=:id
                                     ORDER BY t.idtest");
-        $query->setParameter('id', 1);
+        $query->setParameter('id', $IDStudent);
         $results = $query->getResult();
 
         if (!$results)
@@ -39,7 +39,8 @@ class ExamController extends Controller
         $query = $em->createQuery("SELECT tq,q
                                     FROM AppBundle:TestHasQuestion tq
                                     JOIN tq.questionquestion q
-                                    WHERE tq.testtest=:id");
+                                    WHERE tq.testtest=:id
+                                    ORDER BY tq.questionquestion");
         $query->setParameter('id', $test->getIdtest());
         $results = $query->getResult();
 
@@ -49,15 +50,33 @@ class ExamController extends Controller
             throw $this->createNotFoundException('You are done here');
         }
 
-        $currentQuestion=0;
+        $currentQuestion=1;
         $totalQuestions=0;
+        $currentTestHQ=null;
         foreach($results as $r)
         {
           $totalQuestions=$totalQuestions+1;
+
+          // F**K DOCTRINE AND SYMFONY
+          $em = $this->getDoctrine()->getManager();
+          $connection = $em->getConnection();
+          $statement = $connection->prepare("select 1 from answer where test_has_questiont_idtest_has_question=:id ");
+          $statement->bindValue('id', $r->getIdtestHasQuestion());
+          $statement->execute();
+
+          if ($statement->rowCount())
+            $currentQuestion=$currentQuestion+1;
+          else
+            if (!$currentTestHQ) $currentTestHQ=$r;
         }
 
-        $testHQ=$results[0];
-        $question=$testHQ->getQuestionquestion();
+        if (!$currentTestHQ)
+        {
+            //TODO - Translate message
+            throw $this->createNotFoundException('You are done here');
+        }
+
+        $question=$currentTestHQ->getQuestionquestion();
 
         // just setup a fresh $task object (remove the dummy data)
         $answer = new Answer();
@@ -81,7 +100,7 @@ class ExamController extends Controller
             $answer->setTime(new \DateTime());
 
             //TODO - WTF - This is a mandatory field, but when filled it crashes.
-            $answer->setTestHasQuestionttestHasQuestion($testHQ);
+            $answer->setTestHasQuestionttestHasQuestion($currentTestHQ);
 
 
             //$em->persist($answer);
@@ -93,7 +112,7 @@ class ExamController extends Controller
             $statement->bindValue('text', $answer->getText());
             $statement->bindValue('ambient', $answer->getAmbientVariables());
             $statement->bindValue('time', date("Y-m-d H:i:s"));
-            $statement->bindValue('testHQ', $testHQ->getIdtestHasQuestion());
+            $statement->bindValue('testHQ', $currentTestHQ->getIdtestHasQuestion());
             $statement->execute();
 
             if (!$statement->rowCount())
@@ -104,7 +123,7 @@ class ExamController extends Controller
 
             //$em->flush();
 
-            return $this->redirectToRoute('/exam/answer');
+            return $this->redirect('/exam/answer');
         }
 
         return $this->render('exam/answer.html.twig', array(
