@@ -6,10 +6,12 @@
 
 {% block content %}
     <h2>Question {{ currentQuestion }}/{{ totalQuestions }}:</h2>
-    {{ question_text }}
-    {#{ form_start(form) }}
+    <b>{{ question_text }}</b>
+    <br />
+    Answer: {{ answer_text }}
+    {{ form_start(form) }}
     {{ form_widget(form) }}
-    {{ form_end(form) }#}
+    {{ form_end(form) }}
 {% endblock %}
 
 {% block stylesheets %}

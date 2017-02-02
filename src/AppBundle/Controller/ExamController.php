@@ -29,8 +29,9 @@ class ExamController extends Controller
 
         if (!$results)
         {
-            //TODO - Translate message
-            throw $this->createNotFoundException('You are done here');
+            //Translate message
+            //throw $this->createNotFoundException('You are done here');
+            return $this->redirect('/answer/rate');
         }
 
         $student=$results[0];
@@ -46,8 +47,9 @@ class ExamController extends Controller
 
         if (!$results)
         {
-            //TODO - Translate message
-            throw $this->createNotFoundException('You are done here');
+            //Translate message
+            //throw $this->createNotFoundException('You are done here');
+            return $this->redirect('/answer/rate');
         }
 
         $currentQuestion=1;
@@ -72,8 +74,9 @@ class ExamController extends Controller
 
         if (!$currentTestHQ)
         {
-            //TODO - Translate message
-            throw $this->createNotFoundException('You are done here');
+            //Translate message
+            //throw $this->createNotFoundException('You are done here');
+            return $this->redirect('/answer/rate');
         }
 
         $question=$currentTestHQ->getQuestionquestion();
@@ -130,6 +133,7 @@ class ExamController extends Controller
         return $this->render('exam/answer.html.twig', array(
             'currentQuestion' => $currentQuestion,
             'totalQuestions' => $totalQuestions,
+            'stressor' => $currentTestHQ->getUsesstressors()?1:0,
             'question_text' => $question->getText(),
             'form' => $form->createView(),
         ));

@@ -30,10 +30,13 @@ CREATE TABLE `answer` (
   `ambient_variables` varchar(45) DEFAULT NULL,
   `time` datetime DEFAULT NULL,
   `test_has_questiont_idtest_has_question` int(11) NOT NULL,
+  `idstudent` int(11) NOT NULL,
   PRIMARY KEY (`idanswer`),
   KEY `fk_answer_test_has_question1_idx` (`test_has_questiont_idtest_has_question`),
-  CONSTRAINT `fk_answer_1` FOREIGN KEY (`test_has_questiont_idtest_has_question`) REFERENCES `test_has_question` (`test_idtest`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+  KEY `fk_answer_2_idx` (`idstudent`),
+  CONSTRAINT `fk_answer_1` FOREIGN KEY (`test_has_questiont_idtest_has_question`) REFERENCES `test_has_question` (`test_idtest`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_answer_2` FOREIGN KEY (`idstudent`) REFERENCES `student` (`idsubject`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,7 +45,7 @@ CREATE TABLE `answer` (
 
 LOCK TABLES `answer` WRITE;
 /*!40000 ALTER TABLE `answer` DISABLE KEYS */;
-INSERT INTO `answer` VALUES (8,'a1','TO-BE-DETERMINED','2017-02-02 12:54:04',1),(9,'another and we\'re done','TO-BE-DETERMINED','2017-02-02 12:54:38',2);
+INSERT INTO `answer` VALUES (14,'resp1','TO-BE-DETERMINED','2017-02-02 16:15:01',1,1),(15,'resp2','TO-BE-DETERMINED','2017-02-02 16:15:38',2,1);
 /*!40000 ALTER TABLE `answer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -62,7 +65,7 @@ CREATE TABLE `criterion` (
   PRIMARY KEY (`idcriterion`),
   KEY `fk_criterion_question1_idx` (`question_idquestion`),
   CONSTRAINT `fk_criterion_question1` FOREIGN KEY (`question_idquestion`) REFERENCES `question` (`idquestion`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -71,6 +74,7 @@ CREATE TABLE `criterion` (
 
 LOCK TABLES `criterion` WRITE;
 /*!40000 ALTER TABLE `criterion` DISABLE KEYS */;
+INSERT INTO `criterion` VALUES (1,'does it?',1,1,NULL),(2,'is it?',1,1,NULL),(3,'do you think it does?',1,1,'1'),(4,'does 2?',1,2,NULL),(5,'is 2?',1,2,NULL),(6,'do you think 2?',1,2,'1');
 /*!40000 ALTER TABLE `criterion` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -87,12 +91,14 @@ CREATE TABLE `evaluation` (
   `evaluator_idevaluator` int(11) DEFAULT NULL,
   `answer_idanswer` int(11) DEFAULT NULL,
   `criterion_accomplished` varchar(45) DEFAULT NULL,
+  `ambient_variables` varchar(45) NOT NULL,
+  `time` datetime NOT NULL,
   PRIMARY KEY (`idevaluation`),
   KEY `fk_evaluation_evaluator1_idx` (`evaluator_idevaluator`),
   KEY `fk_evaluation_answer1_idx` (`answer_idanswer`),
   CONSTRAINT `fk_evaluation_answer1` FOREIGN KEY (`answer_idanswer`) REFERENCES `answer` (`idanswer`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_evaluation_evaluator1` FOREIGN KEY (`evaluator_idevaluator`) REFERENCES `evaluator` (`idevaluator`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -101,6 +107,7 @@ CREATE TABLE `evaluation` (
 
 LOCK TABLES `evaluation` WRITE;
 /*!40000 ALTER TABLE `evaluation` DISABLE KEYS */;
+INSERT INTO `evaluation` VALUES (2,1,1,14,'013','TO-BE-DETERMINED','2017-02-02 16:16:36'),(3,1,1,15,'114','TO-BE-DETERMINED','2017-02-02 16:17:47');
 /*!40000 ALTER TABLE `evaluation` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -426,4 +433,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-02-02 13:25:45
+-- Dump completed on 2017-02-02 16:22:05
