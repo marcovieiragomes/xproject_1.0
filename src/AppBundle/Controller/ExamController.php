@@ -41,7 +41,7 @@ class ExamController extends Controller
                                     FROM AppBundle:TestHasQuestion tq
                                     JOIN tq.questionquestion q
                                     WHERE tq.testtest=:id
-                                    ORDER BY tq.questionquestion");
+                                    ORDER BY tq.usesstressors,tq.questionquestion");
         $query->setParameter('id', $test->getIdtest());
         $results = $query->getResult();
 
@@ -52,12 +52,13 @@ class ExamController extends Controller
             return $this->redirect('/answer/rate');
         }
 
-        $currentQuestion=1;
+        $currentQuestion=0;
         $totalQuestions=0;
         $currentTestHQ=null;
         foreach($results as $r)
         {
-          $totalQuestions=$totalQuestions+1;
+          if (!$r->getUsesstressors())
+            $totalQuestions=$totalQuestions+1;
 
           // F**K DOCTRINE AND SYMFONY
           $em = $this->getDoctrine()->getManager();
@@ -67,9 +68,17 @@ class ExamController extends Controller
           $statement->execute();
 
           if ($statement->rowCount())
-            $currentQuestion=$currentQuestion+1;
+          {
+            if (!$r->getUsesstressors())
+              $currentQuestion=$currentQuestion+1;
+          }
           else
-            if (!$currentTestHQ) $currentTestHQ=$r;
+            if (!$currentTestHQ)
+            {
+              $currentTestHQ=$r;
+              if (!$r->getUsesstressors())
+                $currentQuestion=$currentQuestion+1;
+            }
         }
 
         if (!$currentTestHQ)

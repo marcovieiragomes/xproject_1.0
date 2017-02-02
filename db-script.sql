@@ -36,7 +36,7 @@ CREATE TABLE `answer` (
   KEY `fk_answer_2_idx` (`idstudent`),
   CONSTRAINT `fk_answer_1` FOREIGN KEY (`test_has_questiont_idtest_has_question`) REFERENCES `test_has_question` (`test_idtest`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_answer_2` FOREIGN KEY (`idstudent`) REFERENCES `student` (`idsubject`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -45,7 +45,6 @@ CREATE TABLE `answer` (
 
 LOCK TABLES `answer` WRITE;
 /*!40000 ALTER TABLE `answer` DISABLE KEYS */;
-INSERT INTO `answer` VALUES (14,'resp1','TO-BE-DETERMINED','2017-02-02 16:15:01',1,1),(15,'resp2','TO-BE-DETERMINED','2017-02-02 16:15:38',2,1);
 /*!40000 ALTER TABLE `answer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -107,7 +106,6 @@ CREATE TABLE `evaluation` (
 
 LOCK TABLES `evaluation` WRITE;
 /*!40000 ALTER TABLE `evaluation` DISABLE KEYS */;
-INSERT INTO `evaluation` VALUES (2,1,1,14,'013','TO-BE-DETERMINED','2017-02-02 16:16:36'),(3,1,1,15,'114','TO-BE-DETERMINED','2017-02-02 16:17:47');
 /*!40000 ALTER TABLE `evaluation` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -224,7 +222,7 @@ CREATE TABLE `role` (
   `idroles` int(11) NOT NULL AUTO_INCREMENT,
   `rolescol` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`idroles`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -233,6 +231,7 @@ CREATE TABLE `role` (
 
 LOCK TABLES `role` WRITE;
 /*!40000 ALTER TABLE `role` DISABLE KEYS */;
+INSERT INTO `role` VALUES (1,'student');
 /*!40000 ALTER TABLE `role` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -412,7 +411,7 @@ CREATE TABLE `user` (
   PRIMARY KEY (`iduser`),
   KEY `fk_user_role1_idx` (`role_idroles`),
   CONSTRAINT `fk_user_role1` FOREIGN KEY (`role_idroles`) REFERENCES `role` (`idroles`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -421,6 +420,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` VALUES (2,'test','$2y$13$zt1htAgKU431MMKwcsOvd.Aykmm9SUuo5rNHNwCiE04OaAXeqXYF.','1','test@test.com',NULL);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -433,4 +433,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-02-02 16:22:05
+-- Dump completed on 2017-02-02 16:59:17
