@@ -37,7 +37,7 @@ class SocialanalysisController extends Controller
         foreach($results as $r)
         {
           $totalQuestions=$totalQuestions+1;
-          if (!$r->getHidrance())
+          if ($r->getHidrance()===null)
           {
             if (!$sABeingFilled)
             {
@@ -48,7 +48,6 @@ class SocialanalysisController extends Controller
           else
             $currentQuestion=$currentQuestion+1;
         }
-
         if (!$sABeingFilled)
           return $this->render('thankyou.html.twig', array());
 
@@ -59,15 +58,25 @@ class SocialanalysisController extends Controller
 
         $form = $this->createFormBuilder($socAn)
                 ->add('hidrance', ChoiceType::class, array('label' => 'Hidrance with '.$sABeingFilled->getStudentsubject1()->getName(),
-                                                            "choices" => $multipleChoices))
+                                                            "choices" => $multipleChoices,
+                                                            'expanded' => true,
+                                                            'multiple' => false))
                 ->add('friendship1', ChoiceType::class, array('label' => 'Friendship1 with '.$sABeingFilled->getStudentsubject1()->getName(),
-                                                            "choices" => $multipleChoices))
+                                                            "choices" => $multipleChoices,
+                                                            'expanded' => true,
+                                                            'multiple' => false))
                 ->add('friendship2', ChoiceType::class, array('label' => 'Friendship2 with '.$sABeingFilled->getStudentsubject1()->getName(),
-                                                            "choices" => $multipleChoices))
+                                                            "choices" => $multipleChoices,
+                                                            'expanded' => true,
+                                                            'multiple' => false))
                 ->add('advice', ChoiceType::class, array('label' => 'Advice with'.$sABeingFilled->getStudentsubject1()->getName(),
-                                                            "choices" => $multipleChoices))
+                                                            "choices" => $multipleChoices,
+                                                            'expanded' => true,
+                                                            'multiple' => false))
                 ->add('confidence', ChoiceType::class, array('label' => 'Confidence in '.$sABeingFilled->getStudentsubject1()->getName(),
-                                                            "choices" => $multipleChoices))
+                                                            "choices" => $multipleChoices,
+                                                            'expanded' => true,
+                                                            'multiple' => false))
                 ->add('save', SubmitType::class, array('label' => 'Enviar'))
                 ->getForm();
 
