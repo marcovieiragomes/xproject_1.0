@@ -5,11 +5,98 @@
 {% endblock %}
 
 {% block content %}
-    <h2>Question {{ currentQuestion }}/{{ totalQuestions }}:</h2>
-    {{ question_text }}
-    {{ form_start(form) }}
+    <h2>Question
+    {% if stressor == 1 %}
+      (Surprise):
+    {% else %}
+      {{ currentQuestion }}/{{ totalQuestions }}:
+    {% endif %}
+    </h2>
+    {% if stressor == 1 %}
+      <div id="clockBox" class="alert alert-danger">
+        <strong>Warning!</strong> You must answer the question in <span style="font-size:4em; padding-left:10px;" id="clock">2:00</span>.
+      </div>
+    {% endif %}
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        {% if stressor == 1 %}
+          <b style="font-size:1.1em;">This question will affect your global grade</b><br />
+        {% endif %}
+        Question:
+      </div>
+      <div class="panel-body">{{ question_text }}</div>
+    </div>
+    {{ form_start(form, {'attr': {'id': 'form_main'}}) }}
     {{ form_widget(form) }}
     {{ form_end(form) }}
+{% endblock %}
+
+{% block javascripts %}
+<script type="text/javascript">
+  function getAmbient()
+  {
+    //TODO - This function needs to be overwritten.
+    return "CHANGED";
+  }
+
+
+  $(onReady);
+
+  var clock=12;
+  var cBox=null;
+
+  function timerStep()
+  {
+      if (clock<=0)
+      {
+        onSubmitAmbient();
+        document.getElementById('form_main').submit();
+      }
+      else
+      {
+        clock=clock-1;
+
+        if (!cBox)
+          cBox=document.getElementById('clock');
+
+        if (cBox)
+        {
+          var secs="0"+(clock%60);
+          cBox.innerHTML=Math.floor(clock/60)+":"+secs.substring(secs.length-2,secs.length);
+        }
+      }
+  }
+
+  function onSubmitAmbient(ev)
+  {
+      if (ev)
+        ev.preventDefault(); // to stop the form from submitting
+
+      var ambient=getAmbient();
+
+      var button=document.getElementById('form_save');
+      var loading=document.createElement("span");
+      loading.innerHTML="Please wait...";
+      button.parentNode.insertBefore(loading, button);
+      button.style.display="none";
+
+      if (document.getElementById('form_ambientVariables').value=="TO-BE-FILLED")
+        document.getElementById('form_ambientVariables').value="";
+      document.getElementById('form_ambientVariables').value+=ambient;
+      this.submit(); // If all the validations succeeded
+  }
+
+  function onReady()
+  {
+    document.getElementById('form_text').setAttribute('placeholder','Write your answer here');
+
+    $('#form_main').submit(onSubmitAmbient);
+
+      {% if stressor == 1 %}
+        setInterval(timerStep,1000);
+      {% endif %}
+  }
+</script>
 {% endblock %}
 
 {% block stylesheets %}

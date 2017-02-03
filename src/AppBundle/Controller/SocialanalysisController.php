@@ -13,7 +13,7 @@ use AppBundle\Entity\Student;
 class SocialanalysisController extends Controller
 {
     /**
-     * @Route("/social/analysis")
+     * @Route("/social/analysis", name="socialanalysis")
      */
     public function analysisAction(Request $request)
     {
@@ -28,17 +28,29 @@ class SocialanalysisController extends Controller
         $results = $query->getResult();
 
         if (!$results)
-        {
-            //TODO - Translate message
-            throw $this->createNotFoundException('You are done here');
-        }
+          return $this->render('thankyou.html.twig', array());
 
         $currentQuestion=0;
         $totalQuestions=0;
 
-        $studentToRate=null;
+        $sABeingFilled=null;
         foreach($results as $r)
-          $studentToRate=$r;
+        {
+          $totalQuestions=$totalQuestions+1;
+          if (!$r->getHidrance())
+          {
+            if (!$sABeingFilled)
+            {
+              $currentQuestion=$currentQuestion+1;
+              $sABeingFilled=$r;
+            }
+          }
+          else
+            $currentQuestion=$currentQuestion+1;
+        }
+
+        if (!$sABeingFilled)
+          return $this->render('thankyou.html.twig', array());
 
         $socAn=new Socialanalysis();
 
@@ -46,11 +58,16 @@ class SocialanalysisController extends Controller
         $multipleChoices=array("0 (nada)" => 0,"1" => 1, "2" => 2, "3" => 3, "4 (muito)" => 4);
 
         $form = $this->createFormBuilder($socAn)
-                ->add('hidrance', ChoiceType::class, array('label' => 'Hidrance', "choices" => $multipleChoices))
-                ->add('friendship1', ChoiceType::class, array('label' => 'Friendship1', "choices" => $multipleChoices))
-                ->add('friendship2', ChoiceType::class, array('label' => 'Friendship2', "choices" => $multipleChoices))
-                ->add('advice', ChoiceType::class, array('label' => 'Advice', "choices" => $multipleChoices))
-                ->add('confidence', ChoiceType::class, array('label' => 'Confidence', "choices" => $multipleChoices))
+                ->add('hidrance', ChoiceType::class, array('label' => 'Hidrance with '.$sABeingFilled->getStudentsubject1()->getName(),
+                                                            "choices" => $multipleChoices))
+                ->add('friendship1', ChoiceType::class, array('label' => 'Friendship1 with '.$sABeingFilled->getStudentsubject1()->getName(),
+                                                            "choices" => $multipleChoices))
+                ->add('friendship2', ChoiceType::class, array('label' => 'Friendship2 with '.$sABeingFilled->getStudentsubject1()->getName(),
+                                                            "choices" => $multipleChoices))
+                ->add('advice', ChoiceType::class, array('label' => 'Advice with'.$sABeingFilled->getStudentsubject1()->getName(),
+                                                            "choices" => $multipleChoices))
+                ->add('confidence', ChoiceType::class, array('label' => 'Confidence in '.$sABeingFilled->getStudentsubject1()->getName(),
+                                                            "choices" => $multipleChoices))
                 ->add('save', SubmitType::class, array('label' => 'Enviar'))
                 ->getForm();
 
@@ -61,11 +78,11 @@ class SocialanalysisController extends Controller
           // but, the original `$task` variable has also been updated
           $socAnRead = $form->getData();
 
-          $socAn = $em->getRepository('AppBundle:Socialanalysis')->find($studentToRate->getIdsocialanalysis());
+          $socAn = $em->getRepository('AppBundle:Socialanalysis')->find($sABeingFilled->getIdsocialanalysis());
 
           if (!$socAn) {
               throw $this->createNotFoundException(
-                  'No social analysis found for id '.$studentToRate->getIdsocialanalysis()
+                  'No social analysis found for id '.$sABeingFilled->getIdsocialanalysis()
               );
           }
 
@@ -76,37 +93,13 @@ class SocialanalysisController extends Controller
           $socAn->setConfidence($socAnRead->getConfidence());
           $em->flush();
 
-
-          $em->flush();
-
-          /*/ F**K DOCTRINE AND SYMFONY
-          $em = $this->getDoctrine()->getManager();
-          $connection = $em->getConnection();
-          $statement = $connection->prepare("INSERT INTO evaluation(evaluation, evaluator_idevaluator,answer_idanswer,criterion_accomplished,ambient_variables,time)
-                                              VALUES (:evaluation,:idevaluator,:idanswer,:criteria,:ambient,:time) ");
-          $statement->bindValue('evaluation', 1);
-          $statement->bindValue('idevaluator', $IDEvaluator);
-          $statement->bindValue('idanswer', $IDCurrentAnswer);
-          $statement->bindValue('ambient', "TO-BE-DETERMINED");
-          $statement->bindValue('time', date("Y-m-d H:i:s"));
-          $statement->bindValue('criteria', $multicriterion->getEvaluation1()."".$multicriterion->getEvaluation2()."".$multicriterion->getEvaluation3());
-          $statement->execute();
-
-          if (!$statement->rowCount())
-          {
-            //TODO - Translate message
-            throw $this->createNotFoundException('Something went wrong');
-          }
-          else
-            return $this->redirect('/answer/rate');
-          */
+          return $this->redirect('/social/analysis');
         }
 
-        return $this->render('answer/rate.html.twig', array(
+        return $this->render('social/analysis.html.twig', array(
             'currentQuestion' => $currentQuestion,//$currentQuestion,
             'totalQuestions' => $totalQuestions,//$totalQuestions,
-            'answer_text' => $studentToRate->getStudentsubject1()->getName(),
-            'question_text' => 'AA',
+            'person' => $sABeingFilled->getStudentsubject1()->getName(),
             'form' => $form->createView(),
         ));
     }

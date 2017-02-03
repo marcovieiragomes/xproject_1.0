@@ -6,40 +6,53 @@
 
 {% block content %}
     <h2>Question {{ currentQuestion }}/{{ totalQuestions }}:</h2>
-    <b>{{ question_text }}</b>
+    To the question: <b>{{ question_text }}</b>
     <br />
-    Answer: {{ answer_text }}
-    {{ form_start(form) }}
+    <br />
+    <div class="panel panel-default">
+      <div class="panel-heading"><b style="font-size:1.1em;">{{ person }}</b> answered</div>
+      <div class="panel-body">{{ answer_text }}</div>
+    </div>
+    <br />
+    {{ form_start(form, {'attr': {'id': 'form_main'}}) }}
     {{ form_widget(form) }}
     {{ form_end(form) }}
 {% endblock %}
 
+{% block javascripts %}
+<script type="text/javascript">
+  function getAmbient()
+  {
+    //TODO - This function needs to be overwritten.
+    return "CHANGED";
+  }
+
+
+  $(attachSubmit);
+
+  function attachSubmit()
+  {
+    $('#form_main').submit(function(ev) {
+        ev.preventDefault(); // to stop the form from submitting
+
+        var ambient=getAmbient();
+
+        var button=document.getElementById('form_save');
+        var loading=document.createElement("span");
+        loading.innerHTML="Please wait...";
+        button.parentNode.insertBefore(loading, button);
+        button.style.display="none";
+
+        if (document.getElementById('form_ambient').value=="TO-BE-FILLED")
+          document.getElementById('form_ambient').value="";
+        document.getElementById('form_ambient').value+=ambient;
+        this.submit(); // If all the validations succeeded
+      });
+  }
+</script>
+{% endblock %}
+
 {% block stylesheets %}
 <style>
-    body { background: #F5F5F5; font: 18px/1.5 sans-serif; }
-    h1, h2 { line-height: 1.2; margin: 0 0 .5em; }
-    h1 { font-size: 36px; }
-    h2 { font-size: 21px; margin-bottom: 1em; }
-    p { margin: 0 0 1em 0; }
-    a { color: #0000F0; }
-    a:hover { text-decoration: none; }
-    code { background: #F5F5F5; max-width: 100px; padding: 2px 6px; word-wrap: break-word; }
-    #wrapper { background: #FFF; margin: 1em auto; max-width: 800px; width: 95%; }
-    #container { padding: 2em; }
-    #welcome, #status { margin-bottom: 2em; }
-    #welcome h1 span { display: block; font-size: 75%; }
-    #icon-status, #icon-book { float: left; height: 64px; margin-right: 1em; margin-top: -4px; width: 64px; }
-    #icon-book { display: none; }
-    textarea {width:100%;}
-
-    @media (min-width: 768px) {
-        #wrapper { width: 80%; margin: 2em auto; }
-        #icon-book { display: inline-block; }
-        #status a, #next a { display: block; }
-
-        @-webkit-keyframes fade-in { 0% { opacity: 0; } 100% { opacity: 1; } }
-        @keyframes fade-in { 0% { opacity: 0; } 100% { opacity: 1; } }
-        .sf-toolbar { opacity: 0; -webkit-animation: fade-in 1s .2s forwards; animation: fade-in 1s .2s forwards;}
-    }
 </style>
 {% endblock %}

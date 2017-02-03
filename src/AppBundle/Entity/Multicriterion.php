@@ -3,7 +3,7 @@
 namespace AppBundle\Entity;
 
 /**
- * Multicriterion - Used to build a form
+ * Multicriterion - Dummy entity used to build a form
  */
 class Multicriterion
 {
@@ -25,6 +25,12 @@ class Multicriterion
      *
      */
     private $evaluation3;
+
+    /**
+     * @var string
+     *
+     */
+    private $ambient;
 
     /**
      * Set evaluation1
@@ -69,6 +75,20 @@ class Multicriterion
     }
 
     /**
+     * Set ambient
+     *
+     * @param string $ambient
+     *
+     * @return Criterion
+     */
+    public function setAmbient($ambient)
+    {
+        $this->ambient = $ambient;
+
+        return $this;
+    }
+
+    /**
      * Get evaluation1
      *
      * @return integer
@@ -96,5 +116,15 @@ class Multicriterion
     public function getEvaluation3()
     {
         return $this->evaluation3;
+    }
+
+    /**
+     * Get ambient
+     *
+     * @return string
+     */
+    public function getAmbient()
+    {
+        return $this->ambient;
     }
 }

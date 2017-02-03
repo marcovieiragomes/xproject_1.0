@@ -7,13 +7,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use AppBundle\Entity\Answer;
 use AppBundle\Entity\Student;
 
 class ExamController extends Controller
 {
     /**
-     * @Route("/exam/answer")
+     * @Route("/exam/answer", name="exam")
      */
     public function answerAction(Request $request)
     {
@@ -28,11 +29,7 @@ class ExamController extends Controller
         $results = $query->getResult();
 
         if (!$results)
-        {
-            //Translate message
-            //throw $this->createNotFoundException('You are done here');
-            return $this->redirect('/answer/rate');
-        }
+          return $this->render('thankyou.html.twig', array());
 
         $student=$results[0];
         $test=$student->getTesttest();
@@ -46,11 +43,7 @@ class ExamController extends Controller
         $results = $query->getResult();
 
         if (!$results)
-        {
-            //Translate message
-            //throw $this->createNotFoundException('You are done here');
-            return $this->redirect('/answer/rate');
-        }
+          return $this->render('thankyou.html.twig', array());
 
         $currentQuestion=0;
         $totalQuestions=0;
@@ -82,11 +75,7 @@ class ExamController extends Controller
         }
 
         if (!$currentTestHQ)
-        {
-            //Translate message
-            //throw $this->createNotFoundException('You are done here');
-            return $this->redirect('/answer/rate');
-        }
+          return $this->render('thankyou.html.twig', array());
 
         $question=$currentTestHQ->getQuestionquestion();
 
@@ -96,6 +85,7 @@ class ExamController extends Controller
 
         $form = $this->createFormBuilder($answer)
             ->add('text', TextareaType::class, array('label' => false))
+            ->add('ambientVariables', HiddenType::class, array('data' => 'TO-BE-FILLED'))
             ->add('save', SubmitType::class, array('label' => 'Enviar'))
             ->getForm();
 
@@ -108,7 +98,6 @@ class ExamController extends Controller
 
             // ... perform some action, such as saving the task to the database
             // for example, if Task is a Doctrine entity, save it!
-            $answer->setAmbientVariables("TO-BE-DETERMINED"); //TODO
             $answer->setTime(new \DateTime());
 
             //TODO - WTF - This is a mandatory field, but when filled it crashes.

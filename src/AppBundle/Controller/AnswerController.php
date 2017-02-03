@@ -6,6 +6,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use AppBundle\Entity\Answer;
 use AppBundle\Entity\Student;
@@ -14,7 +15,7 @@ use AppBundle\Entity\Multicriterion;
 class AnswerController extends Controller
 {
     /**
-     * @Route("/answer/rate")
+     * @Route("/answer/rate", name="rate")
      */
     public function rateAction(Request $request)
     {
@@ -52,10 +53,7 @@ class AnswerController extends Controller
         $result=$statement->fetchAll();
 
         if (!$result)
-        {
-            //TODO - Translate message
-            throw $this->createNotFoundException('You are done here');
-        }
+          return $this->render('thankyou.html.twig', array());
 
         $IDCurrentAnswer=null;
         $currentQuestion=1;
@@ -70,11 +68,8 @@ class AnswerController extends Controller
               $IDCurrentAnswer=$r['idanswer'];
         }
 
-        if (!$IDCurrentAnswer) {
-            throw $this->createNotFoundException(
-                'Thanks for your collaboration!'
-            );
-        }
+        if (!$IDCurrentAnswer)
+          return $this->render('thankyou.html.twig', array());
 
         /* Are you sh****ng me??
                 $answer = $this->getDoctrine()
@@ -84,7 +79,7 @@ class AnswerController extends Controller
 
         // F**K DOCTRINE AND SYMFONY
         $connection = $em->getConnection();
-        $statement = $connection->prepare("select a.text as response,q.text as question,c.description,c.issubjective
+        $statement = $connection->prepare("select a.text as response,q.text as question,c.description,c.issubjective,s.name
                                             from answer a
                                             inner join test_has_question th
                                             	on a.test_has_questiont_idtest_has_question=th.idtest_has_question
@@ -92,6 +87,8 @@ class AnswerController extends Controller
                                             	on th.question_idquestion=q.idquestion
                                             inner join criterion c
                                             	on q.idquestion=c.question_idquestion
+                                            inner join student s
+  	                                          on a.idstudent=s.idsubject
                                             where a.idanswer=:id");
         $statement->bindValue('id', $IDCurrentAnswer);
         $statement->execute();
@@ -109,6 +106,7 @@ class AnswerController extends Controller
 
         $questionText="";
         $answerText="";
+        $studentName="";
         $i=1;
         $binaryChoices=array("Sim" => 1,"Não" => 0);
         $multipleChoices=array("0 (nada)" => 0,"1" => 1, "2" => 2, "3" => 3, "4 (muito)" => 4);
@@ -116,6 +114,7 @@ class AnswerController extends Controller
         {
           $questionText=$r["question"];
           $answerText=$r["response"];
+          $studentName=$r["name"];
           $choices=$binaryChoices;
           $explanation="";
           if ($r["issubjective"])
@@ -123,11 +122,18 @@ class AnswerController extends Controller
             $choices=$multipleChoices;
             $explanation=" (pick on a scale)";
           }
-          $form=$form->add('evaluation'.$i, ChoiceType::class, array('label' => $r["description"].$explanation, "choices" => $choices));
+          $form=$form->add('evaluation'.$i,
+                            ChoiceType::class,
+                            array('label' => $r["description"].$explanation,
+                                  "choices" => $choices,
+                                  'expanded' => true,
+                                  'multiple' => false));
           $i=$i+1;
         }
 
-        $form=$form->add('save', SubmitType::class, array('label' => 'Enviar'))
+        $form=$form
+            ->add('ambient', HiddenType::class, array('data' => 'TO-BE-FILLED'))
+            ->add('save', SubmitType::class, array('label' => 'Enviar'))
             ->getForm();
 
         $form->handleRequest($request);
@@ -145,7 +151,7 @@ class AnswerController extends Controller
           $statement->bindValue('evaluation', 1);
           $statement->bindValue('idevaluator', $IDEvaluator);
           $statement->bindValue('idanswer', $IDCurrentAnswer);
-          $statement->bindValue('ambient', "TO-BE-DETERMINED");
+          $statement->bindValue('ambient', $multicriterion->getAmbient());
           $statement->bindValue('time', date("Y-m-d H:i:s"));
           $statement->bindValue('criteria', $multicriterion->getEvaluation1()."".$multicriterion->getEvaluation2()."".$multicriterion->getEvaluation3());
           $statement->execute();
@@ -156,7 +162,7 @@ class AnswerController extends Controller
             throw $this->createNotFoundException('Something went wrong');
           }
           else
-            return $this->redirect('/answer/rate');
+            return $this->render('thankyou.html.twig', array());
         }
 
         return $this->render('answer/rate.html.twig', array(
@@ -164,6 +170,7 @@ class AnswerController extends Controller
             'totalQuestions' => $totalQuestions,//$totalQuestions,
             'answer_text' => $answerText,
             'question_text' => $questionText,
+            'person' => $studentName,
             'form' => $form->createView(),
         ));
     }

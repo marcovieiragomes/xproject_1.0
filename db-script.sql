@@ -27,7 +27,7 @@ DROP TABLE IF EXISTS `answer`;
 CREATE TABLE `answer` (
   `idanswer` int(11) NOT NULL AUTO_INCREMENT,
   `text` mediumtext,
-  `ambient_variables` varchar(45) DEFAULT NULL,
+  `ambient_variables` longtext,
   `time` datetime DEFAULT NULL,
   `test_has_questiont_idtest_has_question` int(11) NOT NULL,
   `idstudent` int(11) NOT NULL,
@@ -36,7 +36,7 @@ CREATE TABLE `answer` (
   KEY `fk_answer_2_idx` (`idstudent`),
   CONSTRAINT `fk_answer_1` FOREIGN KEY (`test_has_questiont_idtest_has_question`) REFERENCES `test_has_question` (`test_idtest`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_answer_2` FOREIGN KEY (`idstudent`) REFERENCES `student` (`idsubject`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -45,6 +45,7 @@ CREATE TABLE `answer` (
 
 LOCK TABLES `answer` WRITE;
 /*!40000 ALTER TABLE `answer` DISABLE KEYS */;
+INSERT INTO `answer` VALUES (18,'my answer','TO-BE-DETERMINED','2017-02-03 10:24:07',1,1);
 /*!40000 ALTER TABLE `answer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -90,14 +91,14 @@ CREATE TABLE `evaluation` (
   `evaluator_idevaluator` int(11) DEFAULT NULL,
   `answer_idanswer` int(11) DEFAULT NULL,
   `criterion_accomplished` varchar(45) DEFAULT NULL,
-  `ambient_variables` varchar(45) NOT NULL,
+  `ambient_variables` longtext NOT NULL,
   `time` datetime NOT NULL,
   PRIMARY KEY (`idevaluation`),
   KEY `fk_evaluation_evaluator1_idx` (`evaluator_idevaluator`),
   KEY `fk_evaluation_answer1_idx` (`answer_idanswer`),
   CONSTRAINT `fk_evaluation_answer1` FOREIGN KEY (`answer_idanswer`) REFERENCES `answer` (`idanswer`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_evaluation_evaluator1` FOREIGN KEY (`evaluator_idevaluator`) REFERENCES `evaluator` (`idevaluator`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -106,6 +107,7 @@ CREATE TABLE `evaluation` (
 
 LOCK TABLES `evaluation` WRITE;
 /*!40000 ALTER TABLE `evaluation` DISABLE KEYS */;
+INSERT INTO `evaluation` VALUES (8,1,1,18,'004','CHANGED','2017-02-03 12:12:46');
 /*!40000 ALTER TABLE `evaluation` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -286,7 +288,7 @@ CREATE TABLE `socialanalysis` (
   KEY `fk_socialanalysis_student2_idx` (`student_idsubject1`),
   CONSTRAINT `fk_socialanalysis_student1` FOREIGN KEY (`student_idsubject`) REFERENCES `student` (`idsubject`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_socialanalysis_student2` FOREIGN KEY (`student_idsubject1`) REFERENCES `student` (`idsubject`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -295,7 +297,7 @@ CREATE TABLE `socialanalysis` (
 
 LOCK TABLES `socialanalysis` WRITE;
 /*!40000 ALTER TABLE `socialanalysis` DISABLE KEYS */;
-INSERT INTO `socialanalysis` VALUES (1,3,2,1,0,4,NULL,1,2);
+INSERT INTO `socialanalysis` VALUES (1,NULL,NULL,NULL,NULL,NULL,NULL,1,2),(2,3,2,1,4,0,NULL,1,1);
 /*!40000 ALTER TABLE `socialanalysis` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -434,4 +436,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-02-03  9:55:45
+-- Dump completed on 2017-02-03 12:38:50
