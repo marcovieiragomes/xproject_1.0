@@ -20,9 +20,9 @@ class TestHasQuestion
     private $score;
 
     /**
-     * @var binary
+     * @var integer
      *
-     * @ORM\Column(name="usesStressors", type="binary", nullable=true)
+     * @ORM\Column(name="usesStressors", type="integer", nullable=true)
      */
     private $usesstressors;
 
@@ -84,7 +84,7 @@ class TestHasQuestion
     /**
      * Set usesstressors
      *
-     * @param binary $usesstressors
+     * @param integer $usesstressors
      *
      * @return TestHasQuestion
      */
@@ -98,7 +98,7 @@ class TestHasQuestion
     /**
      * Get usesstressors
      *
-     * @return binary
+     * @return integer
      */
     public function getUsesstressors()
     {

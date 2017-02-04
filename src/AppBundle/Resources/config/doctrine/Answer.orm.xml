@@ -13,7 +13,7 @@
         <option name="fixed"/>
       </options>
     </field>
-    <field name="ambientVariables" type="string" column="ambient_variables" length="45" nullable="true">
+    <field name="ambientVariables" type="text" column="ambient_variables" nullable="true">
       <options>
         <option name="fixed"/>
       </options>
@@ -26,7 +26,7 @@
     </many-to-one>
     <many-to-one field="testHasQuestionttestHasQuestion" target-entity="TestHasQuestion" fetch="LAZY">
       <join-columns>
-        <join-column name="test_has_questiont_idtest_has_question" referenced-column-name="test_idtest"/>
+        <join-column name="test_has_questiont_idtest_has_question" referenced-column-name="idtest_has_question"/>
       </join-columns>
     </many-to-one>
   </entity>

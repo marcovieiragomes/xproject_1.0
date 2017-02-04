@@ -18,7 +18,7 @@ class ExamController extends Controller
      */
     public function answerAction(Request $request)
     {
-        $IDStudent=1;//TODO - Should come from SESSION
+        $IDStudent=70;//TODO - Should come from SESSION
         $em = $this->getDoctrine()->getManager();
         $query = $em->createQuery("SELECT s,t
                                     FROM AppBundle:Student s
@@ -38,8 +38,9 @@ class ExamController extends Controller
                                     FROM AppBundle:TestHasQuestion tq
                                     JOIN tq.questionquestion q
                                     WHERE tq.testtest=:id
-                                    ORDER BY tq.usesstressors,tq.questionquestion");
+                                    ORDER BY tq.usesstressors*MOD(:idst+tq.idtestHasQuestion,2),tq.questionquestion");
         $query->setParameter('id', $test->getIdtest());
+        $query->setParameter('idst', $IDStudent);
         $results = $query->getResult();
 
         if (!$results)
@@ -48,28 +49,32 @@ class ExamController extends Controller
         $currentQuestion=0;
         $totalQuestions=0;
         $currentTestHQ=null;
+        $usesStressorsCurrent=false;
         foreach($results as $r)
         {
-          if (!$r->getUsesstressors())
+          $usesStressors=($r->getUsesstressors()>0) && (($IDStudent+$r->getIdtesthasquestion())%2>0);
+          if (!$usesStressors)
             $totalQuestions=$totalQuestions+1;
 
           // F**K DOCTRINE AND SYMFONY
           $em = $this->getDoctrine()->getManager();
           $connection = $em->getConnection();
-          $statement = $connection->prepare("select 1 from answer where test_has_questiont_idtest_has_question=:id ");
+          $statement = $connection->prepare("select 1 from answer where test_has_questiont_idtest_has_question=:id and idstudent=:idst");
           $statement->bindValue('id', $r->getIdtestHasQuestion());
+          $statement->bindValue('idst', $IDStudent);
           $statement->execute();
 
           if ($statement->rowCount())
           {
-            if (!$r->getUsesstressors())
+            if (!$usesStressors)
               $currentQuestion=$currentQuestion+1;
           }
           else
             if (!$currentTestHQ)
             {
               $currentTestHQ=$r;
-              if (!$r->getUsesstressors())
+              $usesStressorsCurrent=$usesStressors;
+              if (!$usesStressors)
                 $currentQuestion=$currentQuestion+1;
             }
         }
@@ -131,7 +136,7 @@ class ExamController extends Controller
         return $this->render('exam/answer.html.twig', array(
             'currentQuestion' => $currentQuestion,
             'totalQuestions' => $totalQuestions,
-            'stressor' => $currentTestHQ->getUsesstressors()?1:0,
+            'stressor' => $usesStressorsCurrent?1:0,
             'question_text' => $question->getText(),
             'form' => $form->createView(),
         ));

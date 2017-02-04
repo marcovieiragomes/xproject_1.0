@@ -22,7 +22,7 @@ class Answer
     /**
      * @var string
      *
-     * @ORM\Column(name="ambient_variables", type="string", length=45, nullable=true)
+     * @ORM\Column(name="ambient_variables", type="text", nullable=true)
      */
     private $ambientVariables;
 
@@ -57,7 +57,7 @@ class Answer
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\TestHasQuestion")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="test_has_questiont_idtest_has_question", referencedColumnName="test_idtest")
+     *   @ORM\JoinColumn(name="test_has_questiont_idtest_has_question", referencedColumnName="idtest_has_question")
      * })
      */
     private $testHasQuestionttestHasQuestion;

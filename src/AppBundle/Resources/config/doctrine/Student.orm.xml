@@ -5,6 +5,7 @@
       <index name="fk_subject_test1_idx" columns="test_idtest"/>
       <index name="fk_student_evaluator1_idx" columns="evaluator_idevaluator"/>
       <index name="fk_student_class1_idx" columns="group_idgroup"/>
+      <index name="fk_student_1_idx" columns="iduser"/>
     </indexes>
     <id name="idsubject" type="integer" column="idsubject">
       <generator strategy="IDENTITY"/>
@@ -39,9 +40,14 @@
         <join-column name="evaluator_idevaluator" referenced-column-name="idevaluator"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="groupgroup" target-entity="Group" fetch="LAZY">
+    <many-to-one field="groupgroup" target-entity="Studentgroup" fetch="LAZY">
       <join-columns>
         <join-column name="group_idgroup" referenced-column-name="idgroup"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="iduser" target-entity="User" fetch="LAZY">
+      <join-columns>
+        <join-column name="iduser" referenced-column-name="iduser"/>
       </join-columns>
     </many-to-one>
   </entity>

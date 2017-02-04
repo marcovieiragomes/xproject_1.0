@@ -27,6 +27,20 @@ class Evaluation
     private $criterionAccomplished;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="ambient_variables", type="text", nullable=false)
+     */
+    private $ambientVariables;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="time", type="datetime", nullable=false)
+     */
+    private $time;
+
+    /**
      * @var integer
      *
      * @ORM\Column(name="idevaluation", type="integer")

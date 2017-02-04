@@ -20,9 +20,9 @@ class TestHasQuestion
     private $score;
 
     /**
-     * @var binary
+     * @var integer
      *
-     * @ORM\Column(name="usesStressors", type="binary", nullable=true)
+     * @ORM\Column(name="usesStressors", type="integer", nullable=true)
      */
     private $usesstressors;
 

@@ -19,7 +19,7 @@ class AnswerController extends Controller
      */
     public function rateAction(Request $request)
     {
-        $IDEvaluator=1;//TODO - Should come from SESSION
+        $IDEvaluator=70;//TODO - Should come from SESSION
         $em = $this->getDoctrine()->getManager();
 
         /* WON'T WORK
@@ -40,7 +40,7 @@ class AnswerController extends Controller
 
         // F**K DOCTRINE AND SYMFONY
         $connection = $em->getConnection();
-        $statement = $connection->prepare("select a.idanswer, e.idevaluation
+        $statement = $connection->prepare("select sh.idshouldevaluate,a.idanswer, e.idevaluation
                                             from shouldevaluate sh
                                             inner join answer a
                                               on sh.idsubject=a.idstudent
@@ -162,7 +162,7 @@ class AnswerController extends Controller
             throw $this->createNotFoundException('Something went wrong');
           }
           else
-            return $this->render('thankyou.html.twig', array());
+            return $this->redirect('/answer/rate');
         }
 
         return $this->render('answer/rate.html.twig', array(

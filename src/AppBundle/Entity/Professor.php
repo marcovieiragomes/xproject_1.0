@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Professor
  *
- * @ORM\Table(name="professor", indexes={@ORM\Index(name="fk_professor_evaluator1_idx", columns={"evaluator_idevaluator"})})
+ * @ORM\Table(name="professor", indexes={@ORM\Index(name="fk_professor_evaluator1_idx", columns={"evaluator_idevaluator"}), @ORM\Index(name="fk_professor_1_idx", columns={"iduser"})})
  * @ORM\Entity
  */
 class Professor
@@ -37,6 +37,16 @@ class Professor
      * })
      */
     private $evaluatorevaluator;
+
+    /**
+     * @var \AppBundle\Entity\User
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="iduser", referencedColumnName="iduser")
+     * })
+     */
+    private $iduser;
 
 
 
@@ -96,5 +106,29 @@ class Professor
     public function getEvaluatorevaluator()
     {
         return $this->evaluatorevaluator;
+    }
+
+    /**
+     * Set iduser
+     *
+     * @param \AppBundle\Entity\User $iduser
+     *
+     * @return Professor
+     */
+    public function setIduser(\AppBundle\Entity\User $iduser = null)
+    {
+        $this->iduser = $iduser;
+
+        return $this;
+    }
+
+    /**
+     * Get iduser
+     *
+     * @return \AppBundle\Entity\User
+     */
+    public function getIduser()
+    {
+        return $this->iduser;
     }
 }

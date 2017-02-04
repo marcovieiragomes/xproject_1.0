@@ -17,7 +17,7 @@ class SocialanalysisController extends Controller
      */
     public function analysisAction(Request $request)
     {
-        $IDStudent=1;//TODO - Should come from SESSION
+        $IDStudent=70;//TODO - Should come from SESSION
         $em = $this->getDoctrine()->getManager();
 
         $query = $em->createQuery("SELECT sa,s
@@ -54,7 +54,7 @@ class SocialanalysisController extends Controller
         $socAn=new Socialanalysis();
 
         $binaryChoices=array("Sim" => 1,"Não" => 0);
-        $multipleChoices=array("0 (nada)" => 0,"1" => 1, "2" => 2, "3" => 3, "4 (muito)" => 4);
+        $multipleChoices=array("0 (não conheço/nada)" => 0,"1" => 1, "2" => 2, "3" => 3, "4 (muito)" => 4);
 
         $form = $this->createFormBuilder($socAn)
                 ->add('hidrance', ChoiceType::class, array('label' => 'Hidrance with '.$sABeingFilled->getStudentsubject1()->getName(),

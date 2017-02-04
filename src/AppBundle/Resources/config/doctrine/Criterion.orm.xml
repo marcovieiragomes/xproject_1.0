@@ -17,7 +17,11 @@
         <option name="unsigned"/>
       </options>
     </field>
-    <field name="issubjective" type="binary" column="issubjective" nullable="true"/>
+    <field name="issubjective" type="integer" column="issubjective" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
     <many-to-one field="questionquestion" target-entity="Question" fetch="LAZY">
       <join-columns>
         <join-column name="question_idquestion" referenced-column-name="idquestion"/>

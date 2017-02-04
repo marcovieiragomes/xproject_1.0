@@ -27,6 +27,20 @@ class Evaluation
     private $criterionAccomplished;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="ambient_variables", type="text", nullable=false)
+     */
+    private $ambientVariables;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="time", type="datetime", nullable=false)
+     */
+    private $time;
+
+    /**
      * @var integer
      *
      * @ORM\Column(name="idevaluation", type="integer")
@@ -103,6 +117,54 @@ class Evaluation
     public function getCriterionAccomplished()
     {
         return $this->criterionAccomplished;
+    }
+
+    /**
+     * Set ambientVariables
+     *
+     * @param string $ambientVariables
+     *
+     * @return Evaluation
+     */
+    public function setAmbientVariables($ambientVariables)
+    {
+        $this->ambientVariables = $ambientVariables;
+
+        return $this;
+    }
+
+    /**
+     * Get ambientVariables
+     *
+     * @return string
+     */
+    public function getAmbientVariables()
+    {
+        return $this->ambientVariables;
+    }
+
+    /**
+     * Set time
+     *
+     * @param \DateTime $time
+     *
+     * @return Evaluation
+     */
+    public function setTime($time)
+    {
+        $this->time = $time;
+
+        return $this;
+    }
+
+    /**
+     * Get time
+     *
+     * @return \DateTime
+     */
+    public function getTime()
+    {
+        return $this->time;
     }
 
     /**

@@ -27,9 +27,9 @@ class Criterion
     private $evaluation;
 
     /**
-     * @var binary
+     * @var integer
      *
-     * @ORM\Column(name="issubjective", type="binary", nullable=true)
+     * @ORM\Column(name="issubjective", type="integer", nullable=true)
      */
     private $issubjective;
 
@@ -105,7 +105,7 @@ class Criterion
     /**
      * Set issubjective
      *
-     * @param binary $issubjective
+     * @param integer $issubjective
      *
      * @return Criterion
      */
@@ -119,7 +119,7 @@ class Criterion
     /**
      * Get issubjective
      *
-     * @return binary
+     * @return integer
      */
     public function getIssubjective()
     {

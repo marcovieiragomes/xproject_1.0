@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Student
  *
- * @ORM\Table(name="student", indexes={@ORM\Index(name="fk_subject_test1_idx", columns={"test_idtest"}), @ORM\Index(name="fk_student_evaluator1_idx", columns={"evaluator_idevaluator"}), @ORM\Index(name="fk_student_class1_idx", columns={"group_idgroup"})})
+ * @ORM\Table(name="student", indexes={@ORM\Index(name="fk_subject_test1_idx", columns={"test_idtest"}), @ORM\Index(name="fk_student_evaluator1_idx", columns={"evaluator_idevaluator"}), @ORM\Index(name="fk_student_class1_idx", columns={"group_idgroup"}), @ORM\Index(name="fk_student_1_idx", columns={"iduser"})})
  * @ORM\Entity
  */
 class Student
@@ -70,14 +70,24 @@ class Student
     private $evaluatorevaluator;
 
     /**
-     * @var \AppBundle\Entity\Group
+     * @var \AppBundle\Entity\Studentgroup
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Group")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Studentgroup")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="group_idgroup", referencedColumnName="idgroup")
      * })
      */
     private $groupgroup;
+
+    /**
+     * @var \AppBundle\Entity\User
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="iduser", referencedColumnName="iduser")
+     * })
+     */
+    private $iduser;
 
 
 
@@ -238,11 +248,11 @@ class Student
     /**
      * Set groupgroup
      *
-     * @param \AppBundle\Entity\Group $groupgroup
+     * @param \AppBundle\Entity\Studentgroup $groupgroup
      *
      * @return Student
      */
-    public function setGroupgroup(\AppBundle\Entity\Group $groupgroup = null)
+    public function setGroupgroup(\AppBundle\Entity\Studentgroup $groupgroup = null)
     {
         $this->groupgroup = $groupgroup;
 
@@ -252,10 +262,34 @@ class Student
     /**
      * Get groupgroup
      *
-     * @return \AppBundle\Entity\Group
+     * @return \AppBundle\Entity\Studentgroup
      */
     public function getGroupgroup()
     {
         return $this->groupgroup;
+    }
+
+    /**
+     * Set iduser
+     *
+     * @param \AppBundle\Entity\User $iduser
+     *
+     * @return Student
+     */
+    public function setIduser(\AppBundle\Entity\User $iduser = null)
+    {
+        $this->iduser = $iduser;
+
+        return $this;
+    }
+
+    /**
+     * Get iduser
+     *
+     * @return \AppBundle\Entity\User
+     */
+    public function getIduser()
+    {
+        return $this->iduser;
     }
 }

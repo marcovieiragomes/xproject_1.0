@@ -13,7 +13,11 @@
         <option name="unsigned"/>
       </options>
     </field>
-    <field name="usesstressors" type="binary" column="usesStressors" nullable="true"/>
+    <field name="usesstressors" type="integer" column="usesStressors" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
     <many-to-one field="questionquestion" target-entity="Question" fetch="LAZY">
       <join-columns>
         <join-column name="question_idquestion" referenced-column-name="idquestion"/>

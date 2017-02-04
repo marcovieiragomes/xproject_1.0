@@ -14,7 +14,7 @@
     </h2>
     {% if stressor == 1 %}
       <div id="clockBox" class="alert alert-danger">
-        <strong>Warning!</strong> You must answer the question in <span style="font-size:4em; padding-left:10px;" id="clock">2:00</span>.
+        <strong>Warning!</strong> You must answer the question in <span style="font-size:4em; padding-left:10px;" id="clock">5:00</span>.
       </div>
     {% endif %}
     <div class="panel panel-default">
@@ -42,7 +42,7 @@
 
   $(onReady);
 
-  var clock=20;
+  var clock=300;
   var cBox=null;
   var intervalH=null;
 
@@ -106,6 +106,6 @@
 
 {% block stylesheets %}
 <style>
-    
+
 </style>
 {% endblock %}

@@ -18,6 +18,12 @@
         <option name="fixed"/>
       </options>
     </field>
+    <field name="ambientVariables" type="text" column="ambient_variables" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="time" type="datetime" column="time" nullable="false"/>
     <many-to-one field="evaluatorevaluator" target-entity="Evaluator" fetch="LAZY">
       <join-columns>
         <join-column name="evaluator_idevaluator" referenced-column-name="idevaluator"/>

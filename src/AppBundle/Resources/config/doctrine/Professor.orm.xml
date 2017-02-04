@@ -3,6 +3,7 @@
   <entity name="AppBundle\Entity\Professor" table="professor">
     <indexes>
       <index name="fk_professor_evaluator1_idx" columns="evaluator_idevaluator"/>
+      <index name="fk_professor_1_idx" columns="iduser"/>
     </indexes>
     <id name="idprofessor" type="integer" column="idprofessor">
       <generator strategy="IDENTITY"/>
@@ -15,6 +16,11 @@
     <many-to-one field="evaluatorevaluator" target-entity="Evaluator" fetch="LAZY">
       <join-columns>
         <join-column name="evaluator_idevaluator" referenced-column-name="idevaluator"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="iduser" target-entity="User" fetch="LAZY">
+      <join-columns>
+        <join-column name="iduser" referenced-column-name="iduser"/>
       </join-columns>
     </many-to-one>
   </entity>
