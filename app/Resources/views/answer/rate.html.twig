@@ -1,32 +1,27 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    Grade question
+    Classifique esta pergunta
 {% endblock %}
 
 {% block content %}
-    <h2>Question {{ currentQuestion }}/{{ totalQuestions }}:</h2>
-    To the question: <b>{{ question_text }}</b>
+    <h2>Questão {{ currentQuestion }}/{{ totalQuestions }}:</h2>
+    À pergunta: <b>{{ question_text }}</b>
     <br />
     <br />
     <div class="panel panel-default">
-      <div class="panel-heading"><b style="font-size:1.1em;">{{ person }}</b> answered</div>
+      <div class="panel-heading"><b style="font-size:1.1em;">{{ person }}</b> respondeu</div>
       <div class="panel-body">{{ answer_text }}</div>
     </div>
     <br />
     {{ form_start(form, {'attr': {'id': 'form_main'}}) }}
     {{ form_widget(form) }}
     {{ form_end(form) }}
+    <script type="text/javascript" src="{{ asset('js/ambient.js') }}"></script>
 {% endblock %}
 
 {% block javascripts %}
 <script type="text/javascript">
-  function getAmbient()
-  {
-    //TODO - This function needs to be overwritten.
-    return "CHANGED";
-  }
-
 
   $(attachSubmit);
 
@@ -35,11 +30,14 @@
     $('#form_main').submit(function(ev) {
         ev.preventDefault(); // to stop the form from submitting
 
-        var ambient=getAmbient();
+        var ambient="";
+
+        if (getAmbient)
+          ambient=getAmbient();
 
         var button=document.getElementById('form_save');
         var loading=document.createElement("span");
-        loading.innerHTML="Please wait...";
+        loading.innerHTML="Por favor, espere...";
         button.parentNode.insertBefore(loading, button);
         button.style.display="none";
 

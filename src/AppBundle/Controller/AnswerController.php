@@ -19,9 +19,14 @@ class AnswerController extends Controller
      */
     public function rateAction(Request $request)
     {
-        $IDEvaluator=70;//TODO - Should come from SESSION
+        $usr=$this->get('security.token_storage')->getToken()->getUser();
         $em = $this->getDoctrine()->getManager();
 
+        $student = $this->getDoctrine()
+                  ->getRepository('AppBundle:Student')
+                  ->findOneByIduser($usr->getIduser());
+
+        $IDEvaluator=$student->getEvaluatorevaluator()->getIdevaluator();
         /* WON'T WORK
         $query = $em->createQuery("SELECT sh,s,a
                                     FROM AppBundle:Shouldevaluate sh

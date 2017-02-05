@@ -13,7 +13,7 @@
 
     {% block stylesheets %}{% endblock %}
 
-    <title>{% block title %}Something Clever Here!{% endblock %}</title>
+    <title>{% block title %}Autotest{% endblock %}</title>
 
 
     <!-- Latest compiled and minified CSS -->
@@ -38,17 +38,26 @@
             <div id="sidebar-wrapper">
                 <ul class="sidebar-nav">
                     <li class="sidebar-brand">
-                      <a href="">App title (needed?)</a>
+                      {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                          <a href="">Autotest - {{ app.user.username }}</a>
+                      {% else %}
+                          <a href="">Autotest</a>
+                      {% endif %}
+                    </li>
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                    <li>
+                        <a href="{{ path('socialanalysis') }}">Pessoas</a>
                     </li>
                     <li>
-                        <a href="{{ path('socialanalysis') }}">People</a>
+                        <a href="{{ path('exam') }}">Questões</a>
                     </li>
                     <li>
-                        <a href="{{ path('exam') }}">Questions</a>
+                        <a href="{{ path('rate') }}">Avalie</a>
                     </li>
                     <li>
-                        <a href="{{ path('rate') }}">Evaluate</a>
+                        <a href="/logout">Sair</a>
                     </li>
+                    {% endif %}
                 </ul>
             </div>
 

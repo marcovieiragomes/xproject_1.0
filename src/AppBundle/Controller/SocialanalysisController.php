@@ -17,7 +17,14 @@ class SocialanalysisController extends Controller
      */
     public function analysisAction(Request $request)
     {
-        $IDStudent=70;//TODO - Should come from SESSION
+        $usr=$this->get('security.token_storage')->getToken()->getUser();
+        $em = $this->getDoctrine()->getManager();
+
+        $student = $this->getDoctrine()
+                  ->getRepository('AppBundle:Student')
+                  ->findOneByIduser($usr->getIduser());
+
+        $IDStudent=$student->getIdsubject();
         $em = $this->getDoctrine()->getManager();
 
         $query = $em->createQuery("SELECT sa,s
@@ -55,25 +62,26 @@ class SocialanalysisController extends Controller
 
         $binaryChoices=array("Sim" => 1,"Não" => 0);
         $multipleChoices=array("0 (não conheço/nada)" => 0,"1" => 1, "2" => 2, "3" => 3, "4 (muito)" => 4);
+        $multipleChoicesF=array("0 (não conheço/nunca)" => 0,"1" => 1, "2" => 2, "3" => 3, "4 (sempre)" => 4);
 
         $form = $this->createFormBuilder($socAn)
-                ->add('hidrance', ChoiceType::class, array('label' => 'Hidrance with '.$sABeingFilled->getStudentsubject1()->getName(),
+                ->add('hidrance', ChoiceType::class, array('label' => 'Esta pessoa dificulta o desenvolvimento do teu trabalho? ('.$sABeingFilled->getStudentsubject1()->getName().')',
                                                             "choices" => $multipleChoices,
                                                             'expanded' => true,
                                                             'multiple' => false))
-                ->add('friendship1', ChoiceType::class, array('label' => 'Friendship1 with '.$sABeingFilled->getStudentsubject1()->getName(),
+                ->add('friendship1', ChoiceType::class, array('label' => 'Consideras esta pessoa como tua amiga? - intensidade ('.$sABeingFilled->getStudentsubject1()->getName().')',
                                                             "choices" => $multipleChoices,
                                                             'expanded' => true,
                                                             'multiple' => false))
-                ->add('friendship2', ChoiceType::class, array('label' => 'Friendship2 with '.$sABeingFilled->getStudentsubject1()->getName(),
+                ->add('friendship2', ChoiceType::class, array('label' => 'Consideras esta pessoa como tua amiga? - freqüência ('.$sABeingFilled->getStudentsubject1()->getName().')',
+                                                            "choices" => $multipleChoicesF,
+                                                            'expanded' => true,
+                                                            'multiple' => false))
+                ->add('advice', ChoiceType::class, array('label' => 'Recorres a esta pessoa para pedir conselhos ou ajuda? ('.$sABeingFilled->getStudentsubject1()->getName().')',
                                                             "choices" => $multipleChoices,
                                                             'expanded' => true,
                                                             'multiple' => false))
-                ->add('advice', ChoiceType::class, array('label' => 'Advice with'.$sABeingFilled->getStudentsubject1()->getName(),
-                                                            "choices" => $multipleChoices,
-                                                            'expanded' => true,
-                                                            'multiple' => false))
-                ->add('confidence', ChoiceType::class, array('label' => 'Confidence in '.$sABeingFilled->getStudentsubject1()->getName(),
+                ->add('confidence', ChoiceType::class, array('label' => 'Falas com esta pessoa sobre temas confidenciais? ('.$sABeingFilled->getStudentsubject1()->getName().')',
                                                             "choices" => $multipleChoices,
                                                             'expanded' => true,
                                                             'multiple' => false))

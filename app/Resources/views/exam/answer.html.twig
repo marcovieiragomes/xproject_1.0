@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    Question
+    Questão
 {% endblock %}
 
 {% block content %}
-    <h2>Question
+    <h2>Questão
     {% if stressor == 1 %}
       (Surprise):
     {% else %}
@@ -14,32 +14,26 @@
     </h2>
     {% if stressor == 1 %}
       <div id="clockBox" class="alert alert-danger">
-        <strong>Warning!</strong> You must answer the question in <span style="font-size:4em; padding-left:10px;" id="clock">5:00</span>.
+        <strong>Atenção!</strong> Você deve responder à pergunta em <span style="font-size:4em; padding-left:10px;" id="clock">5:00</span>.
       </div>
     {% endif %}
     <div class="panel panel-default">
       <div class="panel-heading">
         {% if stressor == 1 %}
-          <b style="font-size:1.1em;">This question will affect your global grade</b><br />
+          <b style="font-size:1.1em;">Esta pergunta afetará sua qualificação global</b><br />
         {% endif %}
-        Question:
+        Questão:
       </div>
       <div class="panel-body">{{ question_text }}</div>
     </div>
     {{ form_start(form, {'attr': {'id': 'form_main'}}) }}
     {{ form_widget(form) }}
     {{ form_end(form) }}
+    <script type="text/javascript" src="{{ asset('js/ambient.js') }}"></script>
 {% endblock %}
 
 {% block javascripts %}
 <script type="text/javascript">
-  function getAmbient()
-  {
-    //TODO - This function needs to be overwritten.
-    return "CHANGED";
-  }
-
-
   $(onReady);
 
   var clock=300;
@@ -75,11 +69,14 @@
       if (ev)
         ev.preventDefault(); // to stop the form from submitting
 
-      var ambient=getAmbient();
+      var ambient="";
+
+      if (getAmbient)
+        ambient=getAmbient();
 
       var button=document.getElementById('form_save');
       var loading=document.createElement("span");
-      loading.innerHTML="Please wait...";
+      loading.innerHTML="Por favor, espere...";
       button.parentNode.insertBefore(loading, button);
       button.style.display="none";
 
@@ -93,7 +90,7 @@
 
   function onReady()
   {
-    document.getElementById('form_text').setAttribute('placeholder','Write your answer here');
+    document.getElementById('form_text').setAttribute('placeholder','Escreva sua resposta aqui');
 
     $('#form_main').submit(onSubmitAmbient);
 

@@ -18,8 +18,14 @@ class ExamController extends Controller
      */
     public function answerAction(Request $request)
     {
-        $IDStudent=70;//TODO - Should come from SESSION
+        $usr=$this->get('security.token_storage')->getToken()->getUser();
         $em = $this->getDoctrine()->getManager();
+
+        $student = $this->getDoctrine()
+                  ->getRepository('AppBundle:Student')
+                  ->findOneByIduser($usr->getIduser());
+
+        $IDStudent=$student->getIdsubject();
         $query = $em->createQuery("SELECT s,t
                                     FROM AppBundle:Student s
                                     JOIN s.testtest t

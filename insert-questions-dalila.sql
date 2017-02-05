@@ -1,4 +1,4 @@
-SET @TEST_ID=8;
+SET @TEST_ID=9;
 
 -- QUESTION 1
 INSERT INTO `question` (`text`,`evaluation`)
@@ -9,21 +9,23 @@ INSERT INTO `criterion` (`description`,`evaluation`,`question_idquestion`,`issub
 INSERT INTO `criterion` (`description`,`evaluation`,`question_idquestion`,`issubjective`)
   VALUES ('Tens os mesmos pixéis, mas mais espaçados.',1,@ID_QUESTION,0);
 INSERT INTO `criterion` (`description`,`evaluation`,`question_idquestion`,`issubjective`)
-  VALUES ('Fala na resolução do ecrã.',1,@ID_QUESTION,1);
+--  VALUES ('Fala na resolução do ecrã.',1,@ID_QUESTION,1);
+  VALUES ('Correição geral:',1,@ID_QUESTION,1);
 INSERT INTO `test_has_question` (`test_idtest`,`question_idquestion`,`score`,`usesStressors`)
   VALUES (@TEST_ID,@ID_QUESTION,10,0);
 
   
 -- QUESTION 2
 INSERT INTO `xdb`.`question` (`text`,`evaluation`)
-  VALUES ('Supondo que tem uma imagem 15cm de Largura por  10cm de Altura, capturada com 300 DPI em True Color (24 Bpp). Qual o tamanho que essa imagem irá ocupar?',1);
+  VALUES ('Quando falamos de imagem, é preciso ter em atenção que tipo de imagem vamos trabalhar. Se for fotografia, trataremos de um tipo de imagem; se for para elaborarem cartazes para impressão, falamos de outro tipo de imagem. Indique os dois tipos de imagens e explique o seu sistema de cores.',1);
 SET @ID_QUESTION=LAST_INSERT_ID();
 INSERT INTO `criterion` (`description`,`evaluation`,`question_idquestion`,`issubjective`)
-  VALUES ('Apresenta os cálculos da largura, altura e tamanho e chega ao resultado de de 6Mb.',1,@ID_QUESTION,0);
+  VALUES ('Fala e desenvolve a explicação do sistema RGB e do sistema CMYK.',1,@ID_QUESTION,0);
 INSERT INTO `criterion` (`description`,`evaluation`,`question_idquestion`,`issubjective`)
-  VALUES ('Apresenta apenas o resultado 6Mb.',1,@ID_QUESTION,0);
+  VALUES ('Fala e desenvolve apenas de um dos sistemas CMYK ou RGB.',1,@ID_QUESTION,0);
 INSERT INTO `criterion` (`description`,`evaluation`,`question_idquestion`,`issubjective`)
-  VALUES ('Apresenta cálculos errados e valores finais errados.',1,@ID_QUESTION,1);
+--  VALUES ('Indique apenas o nome dos sistemas RGB ou CMYK.',1,@ID_QUESTION,1);
+  VALUES ('Correição geral:',1,@ID_QUESTION,1);
 INSERT INTO `test_has_question` (`test_idtest`,`question_idquestion`,`score`,`usesStressors`)
   VALUES (@TEST_ID,@ID_QUESTION,10,1);
   
@@ -36,6 +38,7 @@ INSERT INTO `criterion` (`description`,`evaluation`,`question_idquestion`,`issub
 INSERT INTO `criterion` (`description`,`evaluation`,`question_idquestion`,`issubjective`)
   VALUES ('Fala que no formato .JPEG e .TIFF a sua visualização no monitor.',1,@ID_QUESTION,0);
 INSERT INTO `criterion` (`description`,`evaluation`,`question_idquestion`,`issubjective`)
-  VALUES ('Fala na resolução RGB dos monitores.',1,@ID_QUESTION,1);
+--  VALUES ('Fala na resolução RGB dos monitores.',1,@ID_QUESTION,1);
+  VALUES ('Correição geral:',1,@ID_QUESTION,1);
 INSERT INTO `test_has_question` (`test_idtest`,`question_idquestion`,`score`,`usesStressors`)
   VALUES (@TEST_ID,@ID_QUESTION,10,1);
