@@ -1,4 +1,4 @@
-SET @TEST_ID=9;
+SET @TEST_ID=8;
 
 -- QUESTION 1
 INSERT INTO `question` (`text`,`evaluation`)
